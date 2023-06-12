@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Registration Form</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+<style>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.alert {
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.bottom {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.bottom a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.bottom a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="box">
+    <h2>Admin Registration</h2>
+    <form action="{{ url_for('register') }}" method="post">
+      {% if message is defined and message %}
+        <div class="alert alert-warning"><strong>{{ message }}</strong></div>
+      {% endif %}
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+      <p class="bottom">Already have an account? <a href="{{url_for('login')}}">Login here</a></p>
+    </form>
+  </div>
+</div>
+</body>
+</html>
