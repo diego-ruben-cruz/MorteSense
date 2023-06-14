@@ -1,102 +1,138 @@
-from flask import Flask, request, jsonify
-from flask_mysqldb import MySQL
-import re
-from flask_cors import CORS, cross_origin
-import bcrypt
-import jwt
+from flask import Flask, request, jsonify, session, make_response
+from flask_bcrypt import Bcrypt
+from flask_cors import CORS
+from flask_session import Session
+from dotenv import load_dotenv
+import os
+import redis
+import mysql.connector
+from uuid import uuid4
+
+load_dotenv()
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
 app.secret_key = 'mdspr'
+app.config['SESSION_TYPE'] = 'redis'
+app.config['SESSION_USE_SIGNER'] = True
+app.config['SESSION_REDIS'] = redis.from_url("redis://127.0.0.1:6379")
+app.config['SESSION_PERMANENT'] = False
+bcrypt = Bcrypt(app)
+CORS(app, supports_credentials=True)
+server_session = Session(app)
 
-app.config['MYSQL_HOST'] = '127.0.0.1'
-app.config['MYSQL_PORT'] = 8889
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
-app.config['MYSQL_DB'] = 'user-system'
+# MySQL Configuration
+mysql_host = "127.0.0.1"
+mysql_user = "root"
+mysql_password = "root"
+mysql_database = "user-system"
 
-mysql = MySQL(app)
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        data = request.get_json()
-        if 'email' in data and 'password' in data:
-            email = data['email']
-            password = data['password']
-        try:
-            cursor = mysql.connection.cursor()
-            cursor.execute('SELECT * FROM user WHERE email = %s', (email,))
-            user = cursor.fetchone()
-            if user and bcrypt.checkpw(password.encode('utf-8'), user[3].encode('utf-8')):
-                # Use a library like PyJWT to create a JWT
-                token = jwt.encode({'userid': user[0]}, app.secret_key)
-                return jsonify({'message': 'Logged in successfully!', 'token': token})
-            else:
-                return jsonify({'message': 'Please enter correct email / password!'}), 400
-        except Exception as e:
-            print(f"Error occurred: {e}")
-            return jsonify({'message': 'Internal server error!'}), 500
+mysql_connection = mysql.connector.connect(
+    host=mysql_host,
+    user=mysql_user,
+    password=mysql_password,
+    database=mysql_database,
+    port=8889
+)
 
 
-@app.route('/logout', methods=['GET'])
-def logout():
-    session.clear()  # Clear the session data
-    return jsonify({'message': 'Logged out successfully!'})
+class User:
+    def __init__(self, id, email, password):
+        self.id = id
+        self.email = email
+        self.password = password
 
 
-@app.route('/registration', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        data = request.get_json()
-        email = data.get('email')
-        username = data.get('username')  # please make sure the field names match those in your frontend form
-        password = data.get('password')
-
-        try:
-            cursor = mysql.connection.cursor()
-            cursor.execute('SELECT * FROM user WHERE email = %s', (email,))
-            account = cursor.fetchone()
-            if account:
-                return jsonify({'message': 'Account already exists!'}), 400
-            else:
-                if not re.match(r'[^@]+@[^@]+\.[^@]+', email):
-                    return jsonify({'message': 'Invalid email address!'}), 400
-                elif not username or not password or not email:
-                    return jsonify({'message': 'Please fill out the form!'}), 400
-                else:
-                    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-                    cursor.execute('INSERT INTO user (name, email, password) VALUES (%s, %s, %s)',
-                                   (username, email, hashed_password))
-                    mysql.connection.commit()
-                    return jsonify({'message': 'You have successfully registered!'})
-        except Exception as e:
-            print(f"Error occurred: {e}")
-            return jsonify({'message': 'Internal server error!'}), 500
+def get_uuid():
+    return str(uuid4())
 
 
-@app.route('/user', methods=['GET'])
-def get_user():
-    if 'user_id' not in session:
-        return jsonify({'message': 'User not logged in!'}), 401
+@app.route("/@me", methods=["GET"])
+def get_current_user():
+    if request.method == "GET":
+        user_id = session.get("user_id")
 
-    user_id = session['user_id']  # Retrieve the user ID from the session
+        if not user_id:
+            return jsonify({"error": "Unauthorized"}), 401
 
-    try:
-        cursor = mysql.connection.cursor()
-        cursor.execute('SELECT email FROM user WHERE id = %s', (user_id,))
-        user = cursor.fetchone()
+        # Fetch user from MySQL
+        cursor = mysql_connection.cursor()
+        query = "SELECT * FROM users WHERE id = %s"
+        cursor.execute(query, (user_id,))
+        result = cursor.fetchone()
 
-        if user:
-            email = user[0]  # Retrieve the email from the database
-            return jsonify({'email': email})
-        else:
-            return jsonify({'message': 'User not found!'}), 404
+        if not result:
+            return jsonify({"error": "User not found"}), 404
 
-    except Exception as e:
-        print(f"Error occurred: {e}")
-        return jsonify({'message': 'Internal server error!'}), 500
+        user = User(result[0], result[1], result[2])
+
+        return jsonify({
+            "id": user.id,
+            "email": user.email
+        })
+
+
+@app.route("/register", methods=["POST"])
+def register_user():
+    email = request.json["email"]
+    password = request.json["password"]
+
+    # Check if user already exists
+    cursor = mysql_connection.cursor()
+    query = "SELECT * FROM users WHERE email = %s"
+    cursor.execute(query, (email,))
+    result = cursor.fetchone()
+
+    if result:
+        return jsonify({"error": "User already exists"}), 409
+
+    # Hash password
+    hashed_password = bcrypt.generate_password_hash(password)
+
+    # Insert new user into MySQL
+    query = "INSERT INTO users (id, email, password) VALUES (%s, %s, %s)"
+    user_id = get_uuid()
+    cursor.execute(query, (user_id, email, hashed_password))
+    mysql_connection.commit()
+
+    session["user_id"] = user_id
+
+    response = make_response(
+        jsonify({"id": user_id, "email": email})
+    )
+    return response
+
+
+@app.route("/login", methods=["POST"])
+def login_user():
+    email = request.json["email"]
+    password = request.json["password"]
+
+    # Fetch user from MySQL
+    cursor = mysql_connection.cursor()
+    query = "SELECT * FROM users WHERE email = %s"
+    cursor.execute(query, (email,))
+    result = cursor.fetchone()
+
+    if not result:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user = User(result[0], result[1], result[2])
+
+    if not bcrypt.check_password_hash(user.password, password):
+        return jsonify({"error": "Unauthorized"}), 401
+
+    session["user_id"] = user.id
+
+    response = make_response(
+        jsonify({"id": user.id, "email": user.email})
+    )
+    return response
+
+
+@app.route("/logout", methods=["POST"])
+def logout_user():
+    session.pop("user_id")
+    return "200"
 
 
 if __name__ == "__main__":

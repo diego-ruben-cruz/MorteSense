@@ -14,6 +14,7 @@ import {
 } from '@heroicons/react/20/solid'
 import {ChevronDownIcon, MagnifyingGlassIcon} from '@heroicons/react/20/solid'
 import {NavLink, useLocation} from "react-router-dom";
+import {logoutUser, UserData} from "../../lib/auth";
 
 interface Navigation {
     name: string;
@@ -37,10 +38,7 @@ const teams = [
     {id: 3, name: 'Diego G', href: '#', initial: 'DG', current: false},
 ]
 
-const userNavigation = [
-    {name: 'Your profile', href: '/profile-details'},
-    {name: 'Sign out', href: '/login'},
-]
+
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
@@ -50,9 +48,22 @@ interface NavbarProps {
     routes: JSX.Element;
 }
 
+
 export default function Navbar({ routes }: NavbarProps) {
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const location = useLocation();
+    const [, setUser] = useState<UserData | null>(null);
+
+
+    const handleLogout = async () => {
+        await logoutUser();
+        setUser(null);
+    };
+
+    const userNavigation = [
+        {name: 'Your profile', href: '/profile-details'},
+        {name: 'Sign out', href: "#", onClick: handleLogout},
+    ]
 
     const handleNavLinkClick = () => {
         if (sidebarOpen) {
@@ -221,7 +232,7 @@ export default function Navbar({ routes }: NavbarProps) {
                                 alt="MDS"
                             />
                             </NavLink>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rhabdosoma Solutions
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Boys
                         </div>
 
                         <nav className="flex flex-1 flex-col">

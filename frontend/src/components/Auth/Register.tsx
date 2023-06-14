@@ -1,46 +1,25 @@
 import React, {FormEvent, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {UserData} from "../../lib/auth";
-import axios from "axios";
+import { handleRegistration, UserData} from "../../lib/auth";
 
-const Registration = () => {
+const Register = () => {
     useEffect(() => {
-        document.title = "MDS | Registration"
+        document.title = "MDS | Register"
     })
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+
+
         e.preventDefault();
 
-        axios.defaults.headers.post['Content-Type'] = 'application/json';
-        axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-
         const data: UserData = {
-            username: username,
             email: email,
             password: password,
         };
-        try {
-            const response = await axios.post(
-                "http://127.0.0.1:5000/registration",
-                data
-            );
-            console.log(response);
-            setUsername("");
-            setEmail("");
-            setPassword("");
-            // Check if registration was successful
-            if (response.status === 200) {
-                window.location.href = "/login"; // Redirect to login page
-            }
-        } catch (error: any) {
-            console.log(error);
-            if (error.response && error.response.status === 401) {
-                alert("Invalid credentials");
-            }
-        }
+
+        await handleRegistration(data);
     };
 
 
@@ -56,23 +35,23 @@ const Registration = () => {
                 </div>
                 <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                     <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
-                        <form className="space-y-6" action="#" method="POST" onClick={handleSubmit}>
+                        <form className="space-y-6" action="#" onSubmit={handleSubmit} method="POST" >
 
-                            <div>
-                                <label htmlFor="username"
-                                       className="block text-sm font-medium leading-6 text-gray-900">Username</label>
-                                <div className="mt-2">
-                                    <input
-                                        id="username"
-                                        name="username"
-                                        type="username"
-                                        autoComplete="username"
-                                        onChange={e => setUsername(e.target.value)}
-                                        required
-                                        className="block mr-4 w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </div>
-                            </div>
+                            {/*<div>*/}
+                            {/*    <label htmlFor="username"*/}
+                            {/*           className="block text-sm font-medium leading-6 text-gray-900">Username</label>*/}
+                            {/*    <div className="mt-2">*/}
+                            {/*        <input*/}
+                            {/*            id="username"*/}
+                            {/*            name="username"*/}
+                            {/*            type="username"*/}
+                            {/*            autoComplete="username"*/}
+                            {/*            onChange={e => setUsername(e.target.value)}*/}
+                            {/*            required*/}
+                            {/*            className="block mr-4 w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"*/}
+                            {/*        />*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
 
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">Email
@@ -82,7 +61,6 @@ const Registration = () => {
                                         id="email"
                                         name="email"
                                         type="email"
-                                        autoComplete="email"
                                         onChange={e => setEmail(e.target.value)}
                                         required
                                         className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -99,7 +77,6 @@ const Registration = () => {
                                         id="password"
                                         name="password"
                                         type="password"
-                                        autoComplete="current-password"
                                         onChange={e => setPassword(e.target.value)}
                                         required
                                         className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -130,9 +107,8 @@ const Registration = () => {
 
                             <div>
                                 <button
-                                    type="submit"
                                     className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                >
+                                    type="submit">
                                     Sign up
                                 </button>
                             </div>
@@ -150,7 +126,6 @@ const Registration = () => {
                                           className="font-medium text-indigo-600 hover:text-indigo-500 ml-1">Login</Link></span>
                                 </div>
 
-
                             </div>
                         </div>
                     </div>
@@ -160,4 +135,4 @@ const Registration = () => {
     )
 }
 
-export default Registration
+export default Register

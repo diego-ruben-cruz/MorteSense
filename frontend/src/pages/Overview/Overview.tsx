@@ -2,13 +2,15 @@ import {useEffect} from "react";
 
 const Overview = () => {
     useEffect(() => {
-        document.title = "MDS | Overview"
-    })
+        document.title = "MDS | Overview";
+    }, []);
+
+
     return (
         <div>
-            OVERVIEW CONTENT
+            <h1>Overview</h1>
         </div>
-    )
-}
+    );
+};
 
-export default Overview
+export default Overview;

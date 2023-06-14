@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Route, Routes} from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import {Page} from './lib/types';
@@ -15,17 +15,22 @@ import Overview from "./pages/Overview/Overview";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfUse/TermsOfService";
 import Login from "./components/Auth/Login";
-import Registration from "./components/Auth/Registration";
+import Register from "./components/Auth/Register";
+import {handleMe, UserData} from "./lib/auth";
+
 
 const pages: Page[] = [
     {
-        path: '/login/*',
+        path: '/login',
         view: <Login/>,
+        // view: <LoginPage/>,
     },
     {
-        path: '/registration/*',
-        view: <Registration/>,
+        path: '/register',
+        view: <Register/>,
+        // view: <RegisterPage/>,
     },
+
     {
         path: '/*',
         view: <Overview/>,
@@ -66,24 +71,55 @@ const pages: Page[] = [
         path: '/terms-of-service/*',
         view: <TermsOfService/>,
     },
-
 ];
 
 function App() {
+    const [user, setUser] = useState<UserData | null>(null);
+
+    useEffect(() => {
+        handleMe()
+            .then((response) => {
+                setUser(response);
+            })
+            .catch((error) => {
+                console.log("Error:", error);
+                console.log("Not authenticated");
+            });
+    }, []);
+
     const routes = (
         <Routes>
             {pages.map((page: Page, idx: number) => (
-                <Route key={idx} path={page.path} element={page.view} />
+                <Route key={idx} path={page.path} element={React.cloneElement(page.view, { setUser })} />
             ))}
         </Routes>
     );
-
     return (
         <div className="App flex flex-col min-h-screen">
-            <ScrollToTop />
-            <Navbar routes={routes} />
+            <ScrollToTop/>
+            {user != null ? (
+                <div>
+                    <h2>Logged in</h2>
+                    <h3>ID: {user.id}</h3>
+                    <h3>Email: {user.email}</h3>
+
+                </div>
+            ) : (
+                <div>
+                    <p>You are not logged in</p>
+                    <div>
+                        <a href="/login">
+                            <button>Login</button>
+                        </a>
+                        <a href="/register">
+                            <button>Register</button>
+                        </a>
+                    </div>
+                </div>
+            )}
+            <Navbar routes={routes}/>
             <main className="flex-grow"></main>
-            <Footer />
+            <Footer/>
         </div>
     );
 }
