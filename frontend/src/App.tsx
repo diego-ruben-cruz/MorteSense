@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Route, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import {Page} from './lib/types';
 import Alerts from './pages/Alerts/Alerts';
@@ -15,11 +15,12 @@ import TermsOfService from "./components/TermsOfUse/TermsOfService";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import {handleMe, UserData} from "./lib/auth";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 function App() {
 
     const [user, setUser] = useState<UserData | null>(null);
-    console.log("My user",user);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -40,7 +41,7 @@ function App() {
         },
         {
             path: '/*',
-            view: <Overview/>,
+            view: <Overview user={user}/>,
         },
         {
             path: '/alerts/*',
@@ -90,13 +91,13 @@ function App() {
     return (
         <div className="App flex flex-col min-h-screen">
             <ScrollToTop/>
-            {/*<Navbar routes={routes}/>*/}
-            {routes}
+            <Navbar routes={routes}/>
             <main className="flex-grow">
             </main>
-            {/*<Footer/>*/}
+            <Footer/>
         </div>
     );
 }
+
 export default App;
 

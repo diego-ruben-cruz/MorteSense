@@ -1,13 +1,16 @@
-import {useEffect, useState} from "react";
-import {UserData} from "../../lib/auth";
-import {Link} from "react-router-dom";
 
-const Overview = () => {
+import { useEffect } from "react";
+import { UserData } from "../../lib/auth";
+import { Link } from "react-router-dom";
+
+interface OverviewProps {
+    user: UserData | null;
+}
+
+const Overview = ({ user }: OverviewProps) => {
     useEffect(() => {
         document.title = "MDS | Overview";
     }, []);
-
-    const [user] = useState<UserData>();
 
     return (
         <div>
@@ -16,15 +19,11 @@ const Overview = () => {
                     <h2>Logged in</h2>
                     <h3>ID: {user.id}</h3>
                     <h3>Email: {user.email}</h3>
-
                 </div>
             ) : (
                 <div>
                     <p>You are not logged in</p>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
+
 
                     <div>
                         <Link to="/login">

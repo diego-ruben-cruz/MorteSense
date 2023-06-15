@@ -15,7 +15,7 @@ import {
 } from '@heroicons/react/20/solid'
 import {ChevronDownIcon, MagnifyingGlassIcon} from '@heroicons/react/20/solid'
 import {Link, NavLink, useLocation} from "react-router-dom";
-import {logoutUser} from "../../lib/auth";
+import {logoutUser, UserData} from "../../lib/auth";
 
 interface Navigation {
     name: string;
@@ -52,10 +52,14 @@ interface NavbarProps {
 export default function Navbar({ routes }: NavbarProps) {
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const location = useLocation();
+
     const navigate = useNavigate();
+    const [, setUser] = useState<UserData | null>(null);
+
     const handleLogout = async () => {
         try {
             await logoutUser();
+            setUser(null); // Reset the user state
             navigate("/login");
         } catch (error) {
             console.log(error);
@@ -66,6 +70,12 @@ export default function Navbar({ routes }: NavbarProps) {
         {name: 'Your profile', href: '/profile-details'},
         {name: 'Sign out', href: "#", onClick: handleLogout},
     ]
+
+
+
+
+
+
 
     const handleNavLinkClick = () => {
         if (sidebarOpen) {

@@ -59,6 +59,7 @@ export const handleLogin = (loginData: UserData) => {
                 if (response.data.token) {
                     localStorage.setItem('token', response.data.token);
                 }
+                console.log("Login successful:", response.data);
                 // Pass the response data when resolving the promise
                 resolve(response.data);
             })
