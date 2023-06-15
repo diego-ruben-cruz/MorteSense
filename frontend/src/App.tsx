@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Route, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import {Page} from './lib/types';
 import Alerts from './pages/Alerts/Alerts';
@@ -32,11 +32,11 @@ function App() {
 
     const pages: Page[] = [
         {
-            path: '/login',
+            path: '/login/*',
             view: <Login setUser={setUser}/>,
         },
         {
-            path: '/register',
+            path: '/register/*',
             view: <Register/>,
         },
         {
@@ -92,15 +92,16 @@ function App() {
         <div className="App flex flex-col min-h-screen">
             {user != null ? (
                 <div className="flex flex-col min-h-screen">
-                    <ScrollToTop />
-                    <Navbar routes={routes} />
+                    <ScrollToTop/>
+                    <Navbar routes={routes}/>
                     <main className="flex-grow"></main>
-                    <Footer />
+                    <Footer/>
                 </div>
             ) : (
-                <div>
-                    <Login setUser={setUser} />
-                </div>
+                <Routes>
+                    <Route path="/login/*" element={<Login setUser={setUser}/>}/>
+                    <Route path="/register/*" element={<Register/>}/>
+                </Routes>
             )}
         </div>
     );
