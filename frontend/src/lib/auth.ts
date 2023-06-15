@@ -6,6 +6,7 @@ export interface UserData {
     id?: string;
     email?: string;
     password?: string;
+    token?: string ;
 }
 
 export const handleMe = (): Promise<UserData> => {
@@ -13,7 +14,10 @@ export const handleMe = (): Promise<UserData> => {
 
     return new Promise<UserData>((resolve, reject) => {
         axios
-            .get<UserData>(`${API_BASE_URL}${endpoint}`, { withCredentials: true })
+            .get<UserData>(`${API_BASE_URL}${endpoint}`, {
+                headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
+                withCredentials: true
+            })
             .then((response) => {
                 console.log("Data is set successfully:", response.data);
                 resolve(response.data);
@@ -31,7 +35,7 @@ export const handleRegistration = (registrationData: UserData) => {
     return new Promise<void>((resolve, reject) => {
         axios
             .post(`${API_BASE_URL}${endpoint}`, registrationData, {
-                withCredentials: false,
+                withCredentials: true,
             })
             .then((response) => {
                 console.log("Registered successfully:", response.data);
@@ -47,12 +51,16 @@ export const handleRegistration = (registrationData: UserData) => {
 export const handleLogin = (loginData: UserData) => {
     const endpoint = "/login";
 
-    return new Promise<void>((resolve, reject) => {
+    return new Promise<UserData>((resolve, reject) => {
         axios
-            .post(`${API_BASE_URL}${endpoint}`, loginData, { withCredentials: true })
+            .post<UserData>(`${API_BASE_URL}${endpoint}`, loginData, { withCredentials: true })
             .then((response) => {
-                console.log("Login successful:", response.data);
-                resolve();
+                // Check if token is not undefined before storing in localStorage
+                if (response.data.token) {
+                    localStorage.setItem('token', response.data.token);
+                }
+                // Pass the response data when resolving the promise
+                resolve(response.data);
             })
             .catch((error) => {
                 console.error("Login failed:", error);
@@ -63,13 +71,17 @@ export const handleLogin = (loginData: UserData) => {
 
 export const logoutUser = async () => {
     const endpoint = "/logout";
-
     try {
         await axios.post(`${API_BASE_URL}${endpoint}`, null, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
             withCredentials: true,
         });
-        window.location.href = "/";
+        // remove the token from the localStorage
+        localStorage.removeItem('token');
     } catch (error) {
         console.error("Logout failed:", error);
+        throw error;
     }
 };

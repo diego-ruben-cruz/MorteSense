@@ -1,24 +1,34 @@
 import React, {FormEvent, useEffect, useState} from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import {handleLogin, UserData} from "../../lib/auth";
+import {useNavigate} from "react-router-dom";
 
-const Login = () => {
+interface LoginProps {
+    setUser: (user: UserData | null) => void;
+}
+
+const Login = ({ setUser }: LoginProps) => {
     useEffect(() => {
         document.title = "MDS | Login";
     }, []);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    let navigate = useNavigate();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         const data: UserData = {
             email: email,
             password: password,
         };
-
-        await handleLogin(data);
+        let response = await handleLogin(data);
+        if (response === undefined) {
+            console.log("error")
+        } else {
+            setUser(response);
+            navigate("/*")
+        }
     };
 
 
@@ -113,7 +123,7 @@ const Login = () => {
                     <div className="mt-6">
                         <div className="relative">
                             <div className="absolute inset-0 flex items-center">
-                                <div className="w-full border-t border-gray-300" />
+                                <div className="w-full border-t border-gray-300"/>
                             </div>
 
                             <div className="relative flex justify-center text-sm">

@@ -1,6 +1,6 @@
 import React, {FormEvent, useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import { handleRegistration, UserData} from "../../lib/auth";
+import {Link, useNavigate} from "react-router-dom";
+import {handleRegistration, UserData} from "../../lib/auth";
 
 const Register = () => {
     useEffect(() => {
@@ -8,18 +8,20 @@ const Register = () => {
     })
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-
-
         e.preventDefault();
-
         const data: UserData = {
             email: email,
             password: password,
         };
-
-        await handleRegistration(data);
+        try {
+            await handleRegistration(data);
+            navigate("/login");
+        } catch (error) {
+            console.log(error);
+        }
     };
 
 
@@ -35,7 +37,7 @@ const Register = () => {
                 </div>
                 <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                     <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
-                        <form className="space-y-6" action="#" onSubmit={handleSubmit} method="POST" >
+                        <form className="space-y-6" action="#" onSubmit={handleSubmit} method="POST">
 
                             {/*<div>*/}
                             {/*    <label htmlFor="username"*/}
@@ -120,10 +122,11 @@ const Register = () => {
                                     <div className="w-full border-t border-gray-300"/>
                                 </div>
 
-                                <div className="relative flex justify-center text-sm"
-                                > <span className="bg-white px-2 text-gray-500">Already have an account ?
+                                <div className="relative flex justify-center text-sm">
+                                    <span className="bg-white px-2 text-gray-500">Already have an account ?
                                     <Link to="/login"
-                                          className="font-medium text-indigo-600 hover:text-indigo-500 ml-1">Login</Link></span>
+                                          className="font-medium text-indigo-600 hover:text-indigo-500 ml-1">Login</Link>
+                                    </span>
                                 </div>
 
                             </div>

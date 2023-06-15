@@ -1,4 +1,5 @@
 import React, {Fragment, useState} from 'react'
+import {useNavigate} from "react-router-dom";
 import {Dialog, Menu, Transition} from '@headlessui/react'
 import {
     Bars3Icon,
@@ -13,8 +14,8 @@ import {
     XMarkIcon,
 } from '@heroicons/react/20/solid'
 import {ChevronDownIcon, MagnifyingGlassIcon} from '@heroicons/react/20/solid'
-import {NavLink, useLocation} from "react-router-dom";
-import {logoutUser, UserData} from "../../lib/auth";
+import {Link, NavLink, useLocation} from "react-router-dom";
+import {logoutUser} from "../../lib/auth";
 
 interface Navigation {
     name: string;
@@ -48,16 +49,17 @@ interface NavbarProps {
     routes: JSX.Element;
 }
 
-
 export default function Navbar({ routes }: NavbarProps) {
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const location = useLocation();
-    const [, setUser] = useState<UserData | null>(null);
-
-
+    const navigate = useNavigate();
     const handleLogout = async () => {
-        await logoutUser();
-        setUser(null);
+        try {
+            await logoutUser();
+            navigate("/login");
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const userNavigation = [
@@ -120,11 +122,11 @@ export default function Navbar({ routes }: NavbarProps) {
                                             <NavLink to="/">
                                             <img
                                                 className="h-8 w-auto"
-                                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                                alt="MDS"
+                                                src="#"
+                                                alt="Logo"
                                             />
                                             </NavLink>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rhabdosoma Solutions
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Boys
                                         </div>
 
                                         <nav className="flex flex-1 flex-col ">
@@ -162,8 +164,7 @@ export default function Navbar({ routes }: NavbarProps) {
                                                     <ul className="-mx-2 mt-2 space-y-1">
                                                         {teams.map((team) => (
                                                             <li key={team.name}>
-                                                                <a
-                                                                    href={team.href}
+                                                                <Link to={team.href}
                                                                     className={classNames(
                                                                         team.current
                                                                             ? 'bg-gray-50 text-indigo-600'
@@ -182,7 +183,7 @@ export default function Navbar({ routes }: NavbarProps) {
             {team.initial}
           </span>
                                                                     <span className="truncate">{team.name}</span>
-                                                                </a>
+                                                                </Link>
                                                             </li>
                                                         ))}
                                                     </ul>
@@ -228,8 +229,8 @@ export default function Navbar({ routes }: NavbarProps) {
                             <NavLink to="/">
                             <img
                                 className="h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                alt="MDS"
+                                src="#"
+                                alt="Logo"
                             />
                             </NavLink>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Boys
@@ -241,8 +242,7 @@ export default function Navbar({ routes }: NavbarProps) {
                                     <ul className="-mx-2 space-y-1">
                                         {navigation.map((item) => (
                                             <li key={item.name}>
-                                                <a
-                                                    href={item.href}
+                                                <Link to={item.href}
                                                     className={classNames(
                                                         item.href === location.pathname
                                                             ? 'bg-gray-50 text-indigo-600'
@@ -258,7 +258,7 @@ export default function Navbar({ routes }: NavbarProps) {
                                                         aria-hidden="true"
                                                     />
                                                     {item.name}
-                                                </a>
+                                                </Link>
                                             </li>
                                         ))}
                                     </ul>
@@ -268,8 +268,7 @@ export default function Navbar({ routes }: NavbarProps) {
                                     <ul className="-mx-2 mt-2 space-y-1">
                                         {teams.map((team) => (
                                             <li key={team.name}>
-                                                <a
-                                                    href={team.href}
+                                                <Link to={team.href}
                                                     className={classNames(
                                                         team.current
                                                             ? 'bg-gray-50 text-indigo-600'
@@ -288,7 +287,7 @@ export default function Navbar({ routes }: NavbarProps) {
                             {team.initial}
                           </span>
                                                     <span className="truncate">{team.name}</span>
-                                                </a>
+                                                </Link>
                                             </li>
                                         ))}
                                     </ul>

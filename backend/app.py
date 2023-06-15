@@ -7,6 +7,7 @@ import os
 import redis
 import mysql.connector
 from uuid import uuid4
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 
 load_dotenv()
 
@@ -16,6 +17,8 @@ app.config['SESSION_TYPE'] = 'redis'
 app.config['SESSION_USE_SIGNER'] = True
 app.config['SESSION_REDIS'] = redis.from_url("redis://127.0.0.1:6379")
 app.config['SESSION_PERMANENT'] = False
+app.config["JWT_SECRET_KEY"] = "mdspr"
+jwt = JWTManager(app)
 bcrypt = Bcrypt(app)
 CORS(app, supports_credentials=True)
 server_session = Session(app)
@@ -47,28 +50,27 @@ def get_uuid():
 
 
 @app.route("/@me", methods=["GET"])
+@jwt_required()  # This ensures the endpoint is protected with JWT
 def get_current_user():
-    if request.method == "GET":
-        user_id = session.get("user_id")
+    # get_jwt_identity() function retrieves the identity of the current token
+    user_id = get_jwt_identity()
 
-        if not user_id:
-            return jsonify({"error": "Unauthorized"}), 401
+    # Fetch user from MySQL
+    cursor = mysql_connection.cursor()
+    query = "SELECT * FROM users WHERE id = %s"
+    cursor.execute(query, (user_id,))
+    result = cursor.fetchone()
 
-        # Fetch user from MySQL
-        cursor = mysql_connection.cursor()
-        query = "SELECT * FROM users WHERE id = %s"
-        cursor.execute(query, (user_id,))
-        result = cursor.fetchone()
+    if not result:
+        return jsonify({"error": "User not found"}), 404
 
-        if not result:
-            return jsonify({"error": "User not found"}), 404
+    user = User(result[0], result[1], result[2])
 
-        user = User(result[0], result[1], result[2])
+    return jsonify({
+        "id": user.id,
+        "email": user.email
+    })
 
-        return jsonify({
-            "id": user.id,
-            "email": user.email
-        })
 
 
 @app.route("/register", methods=["POST"])
@@ -94,10 +96,11 @@ def register_user():
     cursor.execute(query, (user_id, email, hashed_password))
     mysql_connection.commit()
 
-    session["user_id"] = user_id
+    # Create a new token with the user id embedded in it
+    access_token = create_access_token(identity=user_id)
 
     response = make_response(
-        jsonify({"id": user_id, "email": email})
+        jsonify({"id": user_id, "email": email, "token": access_token})
     )
     return response
 
@@ -121,18 +124,23 @@ def login_user():
     if not bcrypt.check_password_hash(user.password, password):
         return jsonify({"error": "Unauthorized"}), 401
 
-    session["user_id"] = user.id
+    # Create a new token with the user id embedded in it
+    access_token = create_access_token(identity=user.id)
 
-    response = make_response(
-        jsonify({"id": user.id, "email": user.email})
-    )
-    return response
+    return jsonify({
+        "id": user.id,
+        "email": user.email,
+        "token": access_token
+    }), 200
 
 
 @app.route("/logout", methods=["POST"])
+@jwt_required()  # JWT is required for logout
 def logout_user():
-    session.pop("user_id")
-    return "200"
+    # In a stateless JWT setup, logout is usually handled client-side by removing the JWT from storage
+    # Optionally, you can add the token to a "blacklist" here, but it's more complex and often unnecessary
+    # This function doesn't do anything in the current setup
+    return jsonify({"message": "Logout successful"}), 200
 
 
 if __name__ == "__main__":
