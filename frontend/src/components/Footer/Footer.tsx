@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className="flex flex-col items-center sm:flex-row text-center sm:text-left">
                     <Link to="/terms-of-service" className="text-gray-400 hover:text-indigo-600 mb-2 sm:mb-0 sm:mr-10">Terms of Service</Link>
                     <Link to="/privacy-policy" className="text-gray-400 hover:text-indigo-600 mb-2 sm:mb-0 sm:mr-10">Privacy Policy</Link>
-                    <span className="text-gray-400 mb-2 sm:mb-0 sm:mr-10">Rhabdonoma Solutions</span>
+                    <span className="text-gray-400 mb-2 sm:mb-0 sm:mr-10">The Boys</span>
                     <span className="text-indigo-600 mt-2 sm:mt-0">&copy; {new Date().getFullYear()} Copyright</span>
                 </div>
             </div>

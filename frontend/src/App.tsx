@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Route, Routes} from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import {Page} from './lib/types';
 import Alerts from './pages/Alerts/Alerts';
@@ -45,39 +45,39 @@ function App() {
         },
         {
             path: '/alerts/*',
-            view: <Alerts/>,
+            view: <Alerts user={user}/>,
         },
         {
             path: '/history/*',
-            view: <History/>,
+            view: <History user={user}/>,
         },
         {
             path: '/status/*',
-            view: <Status/>,
+            view: <Status user={user}/>,
         },
         {
             path: '/analysis/*',
-            view: <Analysis/>,
+            view: <Analysis user={user}/>,
         },
         {
             path: '/settings/*',
-            view: <Settings/>,
+            view: <Settings user={user}/>,
         },
         {
             path: '/help/*',
-            view: <Help/>,
+            view: <Help user={user}/>,
         },
         {
             path: '/profile-details/*',
-            view: <ProfileDetails/>,
+            view: <ProfileDetails user={user}/>,
         },
         {
             path: '/privacy-policy/*',
-            view: <PrivacyPolicy/>,
+            view: <PrivacyPolicy user={user}/>,
         },
         {
             path: '/terms-of-service/*',
-            view: <TermsOfService/>,
+            view: <TermsOfService user={user}/>,
         },
     ];
 
@@ -90,11 +90,18 @@ function App() {
     );
     return (
         <div className="App flex flex-col min-h-screen">
-            <ScrollToTop/>
-            <Navbar routes={routes}/>
-            <main className="flex-grow">
-            </main>
-            <Footer/>
+            {user != null ? (
+                <div className="flex flex-col min-h-screen">
+                    <ScrollToTop />
+                    <Navbar routes={routes} />
+                    <main className="flex-grow"></main>
+                    <Footer />
+                </div>
+            ) : (
+                <div>
+                    <Login setUser={setUser} />
+                </div>
+            )}
         </div>
     );
 }

@@ -81,6 +81,7 @@ export const logoutUser = async () => {
         });
         // remove the token from the localStorage
         localStorage.removeItem('token');
+        console.log(localStorage.getItem('token'))
     } catch (error) {
         console.error("Logout failed:", error);
         throw error;

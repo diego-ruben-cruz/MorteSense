@@ -1,14 +1,23 @@
 import {useEffect} from "react";
+import {UserData} from "../../lib/auth";
 
-const Alerts = () => {
+interface AlertsProps {
+    user: UserData | null;
+}
+const Alerts = ({user}: AlertsProps) => {
     useEffect(() => {
         document.title = "MDS | Alerts"
     })
     return (
         <div>
-            <h1>ALERTS CONTENT</h1>
+            {user != null && (
+                <div>
+                    {/* Add Your Code Inside DIV!!! */}
+                    <h1>ALERTS CONTENT</h1>
+                </div>
+            )}
         </div>
-    )
+    );
 }
 
 export default Alerts
