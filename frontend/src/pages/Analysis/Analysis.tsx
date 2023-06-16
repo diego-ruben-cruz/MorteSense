@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {UserData} from "../../lib/auth";
 
 interface AnalysisProps {
@@ -9,6 +9,8 @@ const Analysis = ({user}: AnalysisProps) => {
     useEffect(() => {
         document.title = "MDS | Analysis"
     })
+
+
     return (
         <div>
             {user != null && (

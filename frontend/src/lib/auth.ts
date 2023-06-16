@@ -6,7 +6,11 @@ export interface UserData {
     id?: string;
     email?: string;
     password?: string;
-    token?: string ;
+    token?: string;
+    name?: string;
+    username?: string;
+    phone?: string;
+    avatar?: string;
 }
 
 export const handleMe = (): Promise<UserData> => {
