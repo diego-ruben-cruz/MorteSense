@@ -7,3 +7,4 @@ redis
 flask-cors
 flask-mysql
 mysql-connector-python
+twilio

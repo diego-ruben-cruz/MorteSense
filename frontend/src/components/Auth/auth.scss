@@ -1,0 +1,135 @@
+.login-container {
+    flex: 1;
+    min-height: auto;
+    flex-direction: column;
+    justify-content: center;
+    padding: 300px 6px 12px 8px;
+}
+
+.logo {
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    width: auto;
+}
+
+.title {
+    margin-top: 6px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #22292f;
+}
+
+.form-container {
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    padding: 30px 20px 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 0.375rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: normal;
+    line-height: 1.25rem;
+    color: #22292f;
+}
+
+.form-input {
+    margin-top: 2px;
+    width: 100%;
+    border-radius: 0.375rem;
+    border: 1px solid #d1d5db;
+    padding: 0.375rem 0.5rem;
+    color: #22292f;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+}
+
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkbox-input {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 0.25rem;
+    border-color: #d1d5db;
+    color: #4f46e5;
+    box-shadow: 0 0 0 1px #d1d5db;
+}
+
+.checkbox-label {
+    margin-left: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #22292f;
+}
+
+.forgot-password {
+    margin-top: 0.125rem;
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: #4f46e5;
+}
+
+.sign-in-button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-radius: 0.375rem;
+    background-color: #4f46e5;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.sign-up {
+    margin-top: 2rem;
+    position: relative;
+}
+
+.sign-up-divider-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #d1d5db;
+}
+
+.sign-up-divider {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dont-have-text {
+    background-color: #fff;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 0.875rem;
+    color: #777;
+}
+
+.dont-have-text a {
+    font-weight: 500;
+    color: #4f46e5;
+    text-decoration: none;
+}
+
+.dont-have-text a:hover {
+    color: #3b2d99;
+}
+
+.dont-have-text span {
+    margin: 0 auto;
+}
