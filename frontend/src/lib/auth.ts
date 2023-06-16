@@ -55,8 +55,10 @@ export const handleLogin = (loginData: UserData) => {
         axios
             .post<UserData>(`${API_BASE_URL}${endpoint}`, loginData, { withCredentials: true })
             .then((response) => {
+                console.log("Server response:", response.data); // Add this line
                 // Check if token is not undefined before storing in localStorage
                 if (response.data.token) {
+                    console.log("Saving token:", response.data.token); // And this one
                     localStorage.setItem('token', response.data.token);
                 }
                 console.log("Login successful:", response.data);
@@ -71,19 +73,22 @@ export const handleLogin = (loginData: UserData) => {
 };
 
 export const logoutUser = async () => {
+    console.log("Entering logoutUser"); // Debugging log
+
     const endpoint = "/logout";
     try {
+        console.log("About to make logout request"); // Debugging log
         await axios.post(`${API_BASE_URL}${endpoint}`, null, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             withCredentials: true,
         });
-        // remove the token from the localStorage
+        console.log("Logout successful"); // Debugging log
+
+        // Remove JWT token from local storage
         localStorage.removeItem('token');
-        console.log(localStorage.getItem('token'))
     } catch (error) {
         console.error("Logout failed:", error);
-        throw error;
     }
 };

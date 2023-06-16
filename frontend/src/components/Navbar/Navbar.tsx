@@ -57,10 +57,12 @@ export default function Navbar({ routes }: NavbarProps) {
     const [, setUser] = useState<UserData | null>(null);
 
     const handleLogout = async () => {
+        console.log("handleLogout called"); // Add this line
         try {
             await logoutUser();
             setUser(null); // Reset the user state
             navigate("/login");
+            window.location.reload();
         } catch (error) {
             console.log(error);
         }
@@ -351,7 +353,7 @@ export default function Navbar({ routes }: NavbarProps) {
                                 />
                                 <input
                                     id="search-field"
-                                    className="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
+                                    className="block h-4/5 w-full ml-8 py-5 mt-2  pl-4 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
                                     placeholder="Search..."
                                     type="search"
                                     name="search"
@@ -396,17 +398,22 @@ export default function Navbar({ routes }: NavbarProps) {
                                             {userNavigation.map((item) => (
                                                 <Menu.Item key={item.name}>
                                                     {({active}) => (
-                                                        <NavLink to={item.href}
-                                                                 className={classNames(
-                                                                     item.href === location.pathname ? 'bg-gray-50' : '',
-                                                                     'block px-3 py-1 text-sm leading-6 text-gray-900'
-                                                                 )}
-                                                        >
-                                                            {item.name}
-                                                        </NavLink>
+                                                        item.name === 'Sign out'
+                                                            ? <button onClick={item.onClick} className='block px-3 py-1 text-sm leading-6 text-gray-900'>
+                                                                {item.name}
+                                                            </button>
+                                                            : <NavLink to={item.href}
+                                                                       className={classNames(
+                                                                           item.href === location.pathname ? 'bg-gray-50' : '',
+                                                                           'block px-3 py-1 text-sm leading-6 text-gray-900'
+                                                                       )}
+                                                            >
+                                                                {item.name}
+                                                            </NavLink>
                                                     )}
                                                 </Menu.Item>
                                             ))}
+
                                         </Menu.Items>
                                     </Transition>
                                 </Menu>
