@@ -8,6 +8,7 @@ import redis
 import mysql.connector
 from uuid import uuid4
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from twilio.rest import Client
 
 load_dotenv()
 
@@ -18,6 +19,9 @@ app.config['SESSION_USE_SIGNER'] = True
 app.config['SESSION_REDIS'] = redis.from_url("redis://127.0.0.1:6379")
 app.config['SESSION_PERMANENT'] = False
 app.config["JWT_SECRET_KEY"] = "mdspr"
+account_sid = os.environ['TWILIO_ACCOUNT_SID']
+auth_token = os.environ['TWILIO_AUTH_TOKEN']
+client = Client(account_sid, auth_token)
 jwt = JWTManager(app)
 bcrypt = Bcrypt(app)
 CORS(app, supports_credentials=True)
@@ -70,7 +74,6 @@ def get_current_user():
         "id": user.id,
         "email": user.email
     })
-
 
 
 @app.route("/register", methods=["POST"])
@@ -141,6 +144,23 @@ def logout_user():
     # Optionally, you can add the token to a "blacklist" here, but it's more complex and often unnecessary
     # This function doesn't do anything in the current setup
     return jsonify({"message": "Logout successful"}), 200
+
+
+@app.route("/send-sms", methods=["POST"])
+def send_sms():
+    phone_number = request.json["phone_number"]
+    message = request.json["message"]
+
+    try:
+        # Use the Twilio client to send an SMS message
+        client.messages.create(
+            body=message,
+            from_="+18446590037",  # Replace with your Twilio phone number
+            to=phone_number
+        )
+        return jsonify({"message": "SMS sent successfully"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == "__main__":
