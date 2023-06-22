@@ -5,7 +5,6 @@ from flask_jwt_extended import JWTManager
 from flask_session import Session
 import redis
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
@@ -18,7 +17,9 @@ app.config['SESSION_PERMANENT'] = False
 app.config["JWT_SECRET_KEY"] = "mdspr"
 jwt = JWTManager(app)
 bcrypt = Bcrypt(app)
-CORS(app, supports_credentials=True)
+
+# CORS configuration
+CORS(app, supports_credentials=True, methods=["GET", "POST", "PUT", "DELETE"])
 server_session = Session(app)
 
 from src.routes import auth, user, twilio

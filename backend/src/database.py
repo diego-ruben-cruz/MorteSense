@@ -33,6 +33,10 @@ try:
           `id` varchar(255) NOT NULL,
           `email` varchar(255) NOT NULL,
           `password` varchar(255) NOT NULL,
+          `name` varchar(255) NOT NULL,
+          `username` varchar(255) NOT NULL,
+          `avatar` varchar(255),
+          `roles` varchar(255) NOT NULL DEFAULT '2001',
           PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
         """)
@@ -41,3 +45,6 @@ try:
 
 except mysql.connector.Error as error:
     print("Failed to connect to the database:", error)
+
+# MySQL CLI: mysql -h mds-rds.cqkrqdqrehjj.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+# Enter password: mdspr001
