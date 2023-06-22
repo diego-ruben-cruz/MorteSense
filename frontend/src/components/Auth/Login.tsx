@@ -1,8 +1,8 @@
 import React, {FormEvent, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {handleLogin, UserData} from "../../lib/auth";
 import {useNavigate} from "react-router-dom";
-import "./auth.scss";
+import "./auth.css";
+import {handleLogin, UserData} from "../../lib/auth";
 
 interface LoginProps {
     setUser: (user: UserData | null) => void;
@@ -28,18 +28,14 @@ const Login = ({setUser}: LoginProps) => {
             console.log("Error occurred during login");
         } else {
             setUser(response);
-            navigate("/*");
+            navigate("/dashboard/overview", {replace: true});
         }
     };
+
 
     return (
         <div className="login-container">
             <div className="xs:mx-auto xs:w-full xs:max-w-md">
-                <img
-                    className="logo"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    alt="Your Company"
-                />
                 <h2 className="title">Sign in to your account</h2>
             </div>
             <div className="xs:mx-auto xs:w-full xs:max-w-md">
@@ -118,7 +114,8 @@ const Login = ({setUser}: LoginProps) => {
                                     <span>Don't have an account?</span>
                                     <Link
                                         to="/register"
-                                        className="dont-have-text font-medium text-indigo-600 hover:text-indigo-500 ml-1">Sign Up
+                                        className="dont-have-text font-medium text-indigo-600 hover:text-indigo-500 ml-1">Sign
+                                        Up
                                     </Link>
                                 </div>
                                 <div className="sign-up-divider-line"></div>

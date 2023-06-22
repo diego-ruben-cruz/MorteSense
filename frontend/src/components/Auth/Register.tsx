@@ -1,13 +1,15 @@
-import React, { FormEvent, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { handleRegistration, UserData } from "../../lib/auth";
-import "./auth.scss";
+import React, {FormEvent, useEffect, useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import "./auth.css";
+import {handleRegistration, UserData} from "../../lib/auth";
 
 const Register = () => {
     useEffect(() => {
         document.title = "MDS | Register";
     }, []);
 
+    const [name, setName] = useState("");
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -15,6 +17,8 @@ const Register = () => {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const data: UserData = {
+            name,
+            username,
             email,
             password,
         };
@@ -30,16 +34,45 @@ const Register = () => {
         <div>
             <div className="login-container">
                 <div className="xs:mx-auto xs:w-full xs:max-w-md">
-                    <img
-                        className="logo"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        alt="Your Company"
-                    />
                     <h2 className="title">Register an account</h2>
                 </div>
                 <div className="mt-8 xs:mx-auto xs:w-full xs:max-w-md">
                     <div className="form-container">
                         <form onSubmit={handleSubmit} className="space-y-6">
+
+
+                            <div>
+                                <label htmlFor="name" className="form-label">
+                                    Name
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        id="name"
+                                        name="name"
+                                        type="name"
+                                        onChange={(e) => setName(e.target.value)}
+                                        required
+                                        className="form-input"
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label htmlFor="username" className="form-label">
+                                    Username
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        id="username"
+                                        name="username"
+                                        type="username"
+                                        onChange={(e) => setUsername(e.target.value)}
+                                        required
+                                        className="form-input"
+                                    />
+                                </div>
+                            </div>
+
                             <div>
                                 <label htmlFor="email" className="form-label">
                                     Email address
