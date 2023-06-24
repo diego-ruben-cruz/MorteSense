@@ -16,7 +16,7 @@ import {
 import {ChevronDownIcon} from '@heroicons/react/20/solid'
 import {Link, NavLink, useLocation} from "react-router-dom";
 import {handleMe, logoutUser, UserData} from "../../lib/auth";
-import {NavbarProps, Navigation, subSettings} from "../../lib/types";
+import {NavbarProps, Navigation} from "../../lib/types";
 import AuthContext from "../../context/AuthProvider";
 
 const navigation: Navigation[] = [
@@ -67,20 +67,6 @@ export default function Navbar({authRoutes}: NavbarProps) {
             setSidebarOpen(false);
         }
     };
-
-    const subSettings: subSettings[] = [
-        {name: 'Account', href: '/dashboard/settings/account-details'},
-        {name: 'Notifications', href: '/dashboard/settings/notification-details'},
-        {name: 'Sensor', href: '/dashboard/settings/sensor-details'},
-    ]
-
-
-    const handleNavLink = (event: any, name: any) => {
-        event.preventDefault();
-        setSelectedNavigation(name);
-    };
-    const [selectedNavigation, setSelectedNavigation] = useState('');
-
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -151,7 +137,6 @@ export default function Navbar({authRoutes}: NavbarProps) {
                                                     alt="Logo"
                                                 />
                                             </NavLink>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Boys
                                         </div>
                                         <nav className="flex flex-1 flex-col ">
                                             <ul className="flex flex-1 flex-col gap-y-7">
@@ -163,13 +148,13 @@ export default function Navbar({authRoutes}: NavbarProps) {
                                                                          onClick={handleSidebarNavLinkClick}
                                                                          className={classNames(
                                                                              item.href === location.pathname
-                                                                                 ? "bg-gray-50 text-indigo-600"
-                                                                                 : "text-gray-700 hover:text-indigo-600 hover:bg-gray-50",
+                                                                                 ? "bg-gray-50 text-rose-900"
+                                                                                 : "text-gray-700 hover:text-rose-900 hover:bg-gray-50",
                                                                              "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                                                                          )}>
                                                                     <item.icon
                                                                         className={classNames(
-                                                                            item.href === location.pathname ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
+                                                                            item.href === location.pathname ? 'text-rose-900' : 'text-gray-400 group-hover:text-rose-900',
                                                                             'h-6 w-6 shrink-0'
                                                                         )}
                                                                         aria-hidden="true"/>
@@ -185,13 +170,13 @@ export default function Navbar({authRoutes}: NavbarProps) {
                                                         to="/dashboard/settings"
                                                         className={classNames(
                                                             location.pathname === "/dashboard/settings"
-                                                                ? "bg-gray-50 text-indigo-600"
-                                                                : "text-gray-700 hover:text-indigo-600 hover:bg-gray-50",
+                                                                ? "bg-gray-50 text-rose-900"
+                                                                : "text-gray-700 hover:text-rose-900 hover:bg-gray-50",
                                                             "group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                                                         )}>
                                                         <Cog6ToothIcon
                                                             className={classNames(
-                                                                location.pathname === "dashboard/settings" ? "text-indigo-600" : "text-gray-400 group-hover:text-indigo-600",
+                                                                location.pathname === "dashboard/settings" ? "text-rose-900" : "text-gray-400 group-hover:text-rose-900",
                                                                 "h-6 w-6 shrink-0"
                                                             )}
                                                             aria-hidden="true"/>
@@ -212,7 +197,6 @@ export default function Navbar({authRoutes}: NavbarProps) {
                         className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
                         <div className="flex h-16 shrink-0 items-center">
                             <NavLink to="/dashboard/overview"><img className="h-8 w-auto" src="/logo.png" alt="Logo"/></NavLink>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Boys
                         </div>
                         <nav className="flex flex-1 flex-col">
                             <ul className="flex flex-1 flex-col gap-y-7">
@@ -223,13 +207,13 @@ export default function Navbar({authRoutes}: NavbarProps) {
                                                 <Link to={item.href}
                                                       className={classNames(
                                                           item.href === location.pathname
-                                                              ? 'bg-gray-50 text-indigo-600'
-                                                              : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50',
+                                                              ? 'bg-gray-50 text-rose-900'
+                                                              : 'text-gray-700 hover:text-rose-900 hover:bg-gray-50',
                                                           'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                                                       )}>
                                                     <item.icon
                                                         className={classNames(
-                                                            item.href === location.pathname ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
+                                                            item.href === location.pathname ? 'text-rose-900' : 'text-gray-400 group-hover:text-rose-900',
                                                             'h-6 w-6 shrink-0'
                                                         )}
                                                         aria-hidden="true"/>
@@ -244,13 +228,13 @@ export default function Navbar({authRoutes}: NavbarProps) {
                                         to="/dashboard/settings"
                                         className={classNames(
                                             location.pathname === "/dashboard/settings"
-                                                ? "bg-gray-50 text-indigo-600"
-                                                : "text-gray-700 hover:text-indigo-600 hover:bg-gray-50",
+                                                ? "bg-gray-50 text-rose-900"
+                                                : "text-gray-700 hover:text-rose-900 hover:bg-gray-50",
                                             "group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                                         )}>
                                         <Cog6ToothIcon
                                             className={classNames(
-                                                location.pathname === "/dashboard/settings" ? "text-indigo-600" : "text-gray-400 group-hover:text-indigo-600",
+                                                location.pathname === "/dashboard/settings" ? "text-rose-900" : "text-gray-400 group-hover:text-rose-900",
                                                 "h-6 w-6 shrink-0"
                                             )} aria-hidden="true"/>
                                         Settings
@@ -299,10 +283,12 @@ export default function Navbar({authRoutes}: NavbarProps) {
                                     <span className="sr-only">View notifications</span>
                                     <BellIcon className="h-6 w-6" aria-hidden="true"/>
                                 </button>
-                                <button type="button" className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
-                                    <span className="sr-only">Admin Page</span>
-                                    <UserIcon className="h-6 w-6" aria-hidden="true"/>
-                                </button>
+                                <a href="/admin">
+                                    <button type="button" className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
+                                        <span className="sr-only">Admin Page</span>
+                                        <UserIcon className="h-6 w-6" aria-hidden="true"/>
+                                    </button>
+                                </a>
                                 {/* Separator */}
                                 <div className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true"/>
                                 {/* Profile dropdown */}

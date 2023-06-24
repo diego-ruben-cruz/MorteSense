@@ -4,7 +4,6 @@ import {
     deleteAccount,
     handleEditUser,
     handleMe,
-    uploadImage,
     UserData
 } from "../../../../lib/auth";
 import {useNavigate} from "react-router-dom";
@@ -79,24 +78,6 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
         }
     };
 
-    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        // Check if a file was selected
-        if (e.target.files && e.target.files.length > 0) {
-            const file = e.target.files[0];
-
-            try {
-                // Upload the image and receive the filename
-                const filename = await uploadImage(file);
-                console.log("Image uploaded successfully:", filename);
-
-                // Update the avatar state with the new filename
-                setAvatar(filename);
-                console.log("Avatar state updated:", filename);
-            } catch (error) {
-                console.error("Error occurred during image upload:", error);
-            }
-        }
-    };
 
     useEffect(() => {
         if (user && user.avatar) {
@@ -154,7 +135,7 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
                                                 placeholder="Name"
                                                 value={name}
                                                 onChange={(e) => setName(e.target.value)}
-                                                className="block w-full rounded-md border-gray-300 py-1.5 px-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                                                className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-rose-500 sm:text-sm"
                                             />
                                         ) : (
                                             <p>Name: {user.name}</p>
@@ -167,7 +148,7 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
                                                 placeholder="Email"
                                                 value={email}
                                                 onChange={(e) => setEmail(e.target.value)}
-                                                className="block w-full rounded-md border-gray-300 py-1.5 px-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                                                className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-rose-500 sm:text-sm"
                                             />
                                         ) : (
                                             <p>Email: {user.email}</p>
@@ -180,7 +161,7 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
                                                 placeholder="Username"
                                                 value={username}
                                                 onChange={(e) => setUsername(e.target.value)}
-                                                className="block w-full rounded-md border-gray-300 py-1.5 px-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                                                className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-rose-500 sm:text-sm"
                                             />
                                         ) : (
                                             <p>Username: {user.username}</p>
@@ -196,13 +177,21 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
                                                 <button
                                                     type="submit"
                                                     onClick={handleSaveClick}
-                                                    className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                                                    className="text-white bg-gradient-to-br px-10 py-2 leading-7
+                                active:from-rose-900 active:to-orange-800 shadow-sm
+                                from-rose-900 to-orange-700 hover:bg-gradient-to-bl
+                                focus:outline-none focus:ring-orange-200 font-medium rounded-lg
+                                text-xs text-center mr-2 mb-2"
                                                 >
                                                     Save
                                                 </button>
                                                 <button
                                                     type="button"
-                                                    className="rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-500"
+                                                    className="text-rose-900 px-10 py-2 leading-7
+                                active:from-white active:to-gray-200 shadow-sm
+                                from-white to-gray-50 hover:bg-gradient-to-bl
+                                focus:outline-none focus:ring-gray-200 font-medium rounded-lg
+                                text-xs text-center mr-2 mb-2"
                                                     onClick={handleCancelClick}
                                                 >
                                                     Cancel
@@ -211,7 +200,11 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
                                         ) : (
                                             <button
                                                 type="button"
-                                                className="rounded-md bg-orange-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+                                                className="text-white bg-gradient-to-br px-10 py-2 leading-7
+                                active:from-rose-900 active:to-orange-800 shadow-sm
+                                from-rose-900 to-orange-700 hover:bg-gradient-to-bl
+                                focus:outline-none focus:ring-orange-200 font-medium rounded-lg
+                                text-xs text-center mr-2 mb-2"
                                                 onClick={handleEditClick}
                                             >
                                                 Edit
@@ -249,7 +242,7 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
                                                 onChange={(e) => setCurrentPassword(e.target.value)}
                                                 type="password"
                                                 autoComplete="current-password"
-                                                className="block w-full rounded-md border-gray-300 py-1.5 px-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                                                className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-rose-500 sm:text-sm"
                                             />
                                         </div>
                                     </div>
@@ -268,7 +261,7 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
                                                 onChange={(e) => setNewPassword(e.target.value)}
                                                 type="password"
                                                 autoComplete="new-password"
-                                                className="block w-full rounded-md border-gray-300 py-1.5 px-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                                                className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-rose-500 sm:text-sm"
                                             />
                                         </div>
                                     </div>
@@ -287,7 +280,7 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
                                                 onChange={(e) => setConfirmPassword(e.target.value)}
                                                 type="password"
                                                 autoComplete="new-password"
-                                                className="block w-full rounded-md border-gray-300 py-1.5 px-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                                                className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-rose-500 sm:text-sm"
                                             />
                                         </div>
                                     </div>
@@ -296,7 +289,11 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
                                 <div className="mt-8 flex">
                                     <button
                                         type="submit"
-                                        className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                                        className="text-white bg-gradient-to-br px-10 py-2 leading-7
+                                active:from-rose-900 active:to-orange-800 shadow-sm
+                                from-rose-900 to-orange-700 hover:bg-gradient-to-bl
+                                focus:outline-none focus:ring-orange-200 font-medium rounded-lg
+                                text-xs text-center mr-2 mb-2"
                                     >
                                         Save
                                     </button>
@@ -321,7 +318,11 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
                                 <button
                                     type="submit"
 
-                                    className="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400">
+                                    className="text-white bg-gradient-to-br px-10 py-2 leading-7
+                                active:from-rose-900 active:to-orange-800 shadow-sm
+                                from-rose-900 to-orange-700 hover:bg-gradient-to-bl
+                                focus:outline-none focus:ring-orange-200 font-medium rounded-lg
+                                text-xs text-center mr-2 mb-2">
                                     Yes, delete my account
                                 </button>
                             </form>

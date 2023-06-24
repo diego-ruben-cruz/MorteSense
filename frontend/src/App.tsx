@@ -6,16 +6,18 @@ import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import Unauthorized from "./components/Unauthorized/Unauthorized";
 import Home from "./pages/public/Home/Home";
-import About from "./pages/public/Page/About";
+import About from "./pages/public/About/About";
 import {handleMe, UserData} from "./lib/auth";
 import DashboardLayout from "./components/DashboardLayout/DashboardLayout";
 import LandingLayout from "./components/LandingLayout/LandingLayout";
 import ScrollToTop from "./hooks/ScrollToTop";
+import RequireAuth from "./components/RequireAuth/RequireAuth";
+import AdminDashboard from "./pages/admin/Dashboard/AdminDashboard";
 
-// const ROLES = {
-//     'User': "2001",
-//     'Admin': "5150"
-// }
+const ROLES = {
+    'User': "2001",
+    'Admin': "5150"
+}
 
 function App() {
 
@@ -28,7 +30,6 @@ function App() {
             handleMe().then(user => setUser(user)).catch(err => console.error(err));
         }
     }, []);
-
 
     return (
 
@@ -51,10 +52,10 @@ function App() {
                 {/*<Route element={<RequireAuth allowedRoles={[ROLES.User]}/>}>*/}
                 {/*    <Route path="/overview" element={<Overview/>}/>*/}
                 {/*</Route>*/}
-                {/*<Route element={<RequireAuth allowedRoles={[ROLES.Admin]}/>}>*/}
-                {/*    <Route path="/admin" element={<AdminDashboard/>}/>*/}
-                {/*</Route>*/}
-                {/* Catch Page Not Found Exception */}
+                <Route element={<RequireAuth allowedRoles={[ROLES.Admin]}/>}>
+                    <Route path="dashboard/admin" element={<AdminDashboard/>}/>
+                </Route>
+                {/* Catch About Not Found Exception */}
                 <Route path="*" element={<NotFound/>}/>
         </Routes>
     );

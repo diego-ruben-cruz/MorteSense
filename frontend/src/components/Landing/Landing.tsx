@@ -17,9 +17,9 @@ const navigation: NavigationButton[] = [
 const Landing = () => {
     const location = useLocation();
 
-    const activeLg = "text-gray-600 border-b border-gray-600 px-3 py-2 text-sm font-medium";
+    const activeLg = "text-rose-900 border-b border-rose-600 px-3 py-2 text-sm font-medium";
     const inactiveLg = "text-gray-500 hover:text-gray-600 px-3 py-2 text-sm font-medium transition duration-150 ease-in-out";
-    const activeSm = "block px-3 py-2 rounded-md text-base font-medium text-gray-600 bg-gray-50";
+    const activeSm = "block px-3 py-2 rounded-md text-base font-medium text-rose-900 bg-gray-50";
     const inactiveSm = "block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-gray-600 hover:bg-gray-50 duration-150 ease-in-out";
 
     return (
@@ -49,7 +49,7 @@ const Landing = () => {
                         </div>
                         <div className="flex gap-x-4">
                             <NavLink to="login"
-                                     className="text-black px-10 py-2 leading-7
+                                     className="text-rose-900 px-10 py-2 leading-7
                                 active:from-white active:to-gray-200 shadow-sm
                                 from-white to-gray-50 hover:bg-gradient-to-bl
                                 focus:outline-none focus:ring-gray-200 font-medium rounded-lg
@@ -57,9 +57,9 @@ const Landing = () => {
                             </NavLink>
                             <NavLink to="register"
                                      className="text-white bg-gradient-to-br px-10 py-2 leading-7
-                                active:from-gray-600 active:to-zinc-500 shadow-sm
-                                from-gray-500 to-zinc-400 hover:bg-gradient-to-bl
-                                focus:outline-none focus:ring-gray-200 font-medium rounded-lg
+                                active:from-rose-900 active:to-orange-800 shadow-sm
+                                from-rose-900 to-orange-700 hover:bg-gradient-to-bl
+                                focus:outline-none focus:ring-orange-200 font-medium rounded-lg
                                 text-xs text-center mr-2 mb-2">Register
                             </NavLink>
                         </div>

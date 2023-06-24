@@ -42,8 +42,8 @@ const Settings = ({ user }: SettingsProps) => {
                                     <Link to={item.href}
                                         className={
                                             selectedNavigation === item.name
-                                                ? 'bg-gray-50  text-indigo-600 p-3 rounded-lg'
-                                                : 'text-gray-700 hover:text-indigo-600 p-3 rounded-lg hover:bg-gray-50'
+                                                ? 'bg-gray-50  text-rose-900 p-3 rounded-lg'
+                                                : 'text-gray-700 hover:text-rose-900 p-3 rounded-lg hover:bg-gray-50'
                                         }
                                         onClick={(event) => handleNavLink(event, item.name)}
                                     >

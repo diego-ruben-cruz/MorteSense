@@ -13,7 +13,7 @@ const FooterOne = () => {
                 <div className="flex">
                     {/* Facebook */}
                     <Link to="#"
-                          className="mr-6 hover:text-gray-900">
+                          className="mr-6 hover:text-rose-900">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-4 w-4 "
@@ -25,7 +25,7 @@ const FooterOne = () => {
                     </Link>
                     {/* Instagram */}
                     <Link to="#"
-                          className="mr-6 hover:text-gray-900 text-gray-600">
+                          className="mr-6 hover:text-rose-900 text-gray-600">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-4 w-4"
@@ -37,7 +37,7 @@ const FooterOne = () => {
                     </Link>
                     {/* Youtube */}
                     <Link  to="#"
-                           className="hover:text-gray-900 text-gray-600">
+                           className="hover:text-rose-900 text-gray-600">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -57,42 +57,42 @@ const FooterOne = () => {
                     </Link>
                 </div>
                 <div className="text-neutral-600 space-y-4 select-none">
-                    <h6 className="text-black font-semibold">
+                    <h6 className="text-rose-900 font-semibold">
                         OTHER
                     </h6>
                     <p>
-                        <Link to="#" className="hover:text-gray-900">
+                        <Link to="#" className="hover:text-rose-900">
                             Blank
                         </Link>
                     </p>
                     <p>
-                        <Link to="#" className="hover:text-gray-900">
+                        <Link to="#" className="hover:text-rose-900">
                             Blank
                         </Link>
                     </p>
                     <p>
-                        <Link to="" className="hover:text-gray-900">
+                        <Link to="" className="hover:text-rose-900">
                             Blank
                         </Link>
                     </p>
 
                 </div>
                 <div className="text-neutral-600 space-y-4 select-none">
-                    <h6 className="font-semibold text-black">
+                    <h6 className="font-semibold text-rose-900">
                         TEAM GITHUB
                     </h6>
                     <p>
-                        <Link to="https://github.com/shohinsan" className="hover:text-gray-900">
+                        <Link to="https://github.com/shohinsan" className="hover:text-rose-900">
                             Shohin Abdulkhamidov
                         </Link>
                     </p>
                     <p>
-                        <Link to="https://github.com/diego-ruben-cruz" className="hover:text-gray-900">
+                        <Link to="https://github.com/diego-ruben-cruz" className="hover:text-rose-900">
                             Diego Ruben-Cruz
                         </Link>
                     </p>
                     <p>
-                        <Link to="https://github.com/artak10t" className="hover:text-gray-900">
+                        <Link to="https://github.com/artak10t" className="hover:text-rose-900">
                             Spartak Gevorgyan
                         </Link>
                     </p>
@@ -103,7 +103,7 @@ const FooterOne = () => {
                     </p>
                 </div>
                 <div className="space-y-4 text-gray-900">
-                    <h6 className="font-semibold select-none text-black">
+                    <h6 className="font-semibold select-none text-rose-900">
                         CONTACT
                     </h6>
                     <p className="flex items-center justify-center md:justify-start">
@@ -148,8 +148,8 @@ const FooterOne = () => {
                 </div>
             </div>
             <div className="select-none rounded-b-lg p-6 text-center bg-gray-200">
-                <span className="text-gray-800">© {new Date().getFullYear()} Copyright : </span>
-                <span className="font-semibold text-gray-400">Brand Name</span>
+                <span className="text-rose-900">© {new Date().getFullYear()} Copyright : </span>
+                <span className="font-semibold text-gray-400">MorteSense</span>
             </div>
         </footer>
     )
