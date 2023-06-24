@@ -1,20 +1,206 @@
-# CMPE195a-HomeRepo-2023
-Repository for the CMPE 195a Senior Project with Group 08
+<a name="readme-top"></a>
 
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
-# Login Form
-![image](https://github.com/diego-ruben-cruz/CMPE195a-HomeRepo-2023/assets/22685770/c309590b-79eb-427b-af85-11f811efe459)
-# Registration Form
-![image](https://github.com/diego-ruben-cruz/CMPE195a-HomeRepo-2023/assets/22685770/834beabb-a028-458d-a257-8b240a282a9f)
-# MySQL Database
-![image](https://github.com/diego-ruben-cruz/CMPE195a-HomeRepo-2023/assets/22685770/b4d78705-556d-4d68-b559-cd56e216432d)
-# Dashboard Placeholder
-![image](https://github.com/diego-ruben-cruz/CMPE195a-HomeRepo-2023/assets/22685770/2d041817-0dbf-4d2e-b8f4-a95f4aefb5b6)
-# Testing New UI
-![image](https://github.com/diego-ruben-cruz/CMPE195a-HomeRepo-2023/assets/22685770/a341904a-4710-48f6-8aef-5669273bd5f6)
-# Backend Structure
-![image](https://github.com/diego-ruben-cruz/CMPE195a-HomeRepo-2023/assets/22685770/f95eb937-e29c-41ac-a716-df122405c699)
-# Frontend Structure
-![image](https://github.com/diego-ruben-cruz/CMPE195a-HomeRepo-2023/assets/22685770/3277835a-1161-4ddf-903f-ae1daf826fa3)
-# Test Twilio API
-![image](https://github.com/diego-ruben-cruz/CMPE195a-HomeRepo-2023/assets/22685770/f9acb537-d8b9-47f7-83bc-c9f94d3527ef)
+<!-- ABOUT THE PROJECT -->
+# Technical Documentation
+
+<!-- PROJECT LOGO -->
+<br />
+  <h3 align="center">DYI Security. Microwave Motion Detector Sensor</h3>
+
+<p align="center">
+  <img src="https://github.com/diego-ruben-cruz/MorteSense/assets/22685770/951ab71b-7e41-438f-ac96-d43e82af6f04.jpg" alt="My Image" width="1000" height="auto">
+</p>
+  <p align="center">
+    <br />
+    <br />
+    <br />
+    <a href="https://cmpe-195a-home-repo-2023.vercel.app/">View Demo</a>
+    ·
+    <a href="https://github.com/diego-ruben-cruz/MorteSense/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/diego-ruben-cruz/MorteSense/issues">Request Feature</a>
+  </p>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <li><a href="#about-the-project">About The Project</a></li>
+      <li><a href="#inspiration">Inspiration</a></li>
+      <li><a href="#challenges-we-ran-into">Challenges we ran into</a></li>
+      <li><a href="#accomplishments-we-are-proud-of">Accomplishments we're proud of</a></li>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites-and-installation">Prerequisites and Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+<img width="1012" alt="image" src="https://github.com/diego-ruben-cruz/MorteSense/assets/22685770/87117ac6-9d99-415a-bb4e-8ee2301747c8">
+
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+
+This is the comprehensive project for CMPE 195B (Senior Design Project II) at San Jose State University, for the Fall 2023 semester. This project is a multi-tiered, end-to-end system composed of several elements:
+
+* A web-based application enabling customers to oversee their sensor' data
+* A MorteSense API responsible for processing requests coming from the Client app
+* A database designed to maintain records of users and sensors
+
+## Inspiration
+
+Add me anything
+
+## Challenges we ran into
+
+Add me anything
+
+## Accomplishments we are proud of
+
+Add me anything
+
+## Architecture
+
+![image](https://github.com/diego-ruben-cruz/MorteSense/assets/22685770/f52b7501-fd80-4983-8fb2-fac79bbf145e)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Built With
+
+![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)
+![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites and Installation
+
+#### Backend
+* Requirements.txt
+* Redis server
+
+#### Frontend
+* Node Modules
+  ```npm run install```
+
+#### API Tooling
+* Postman
+  - filename
+
+* Mobile CLI
+  - cd project_folder
+  
+  ```
+  java -cp starbucks-app.jar -Dapiurl="http://localhost:8080" -Dapikey="2H3fONTa8ugl1IcVS7CjLPnPIS2Hp9dJ" -Dregister="5012349" starbucks.Main 2>debug.log
+  ```
+
+* AWS RDS connection
+1. Command to get into MySQL CLI
+```
+mysql -h [DATABASE_NAME].[HOST] -P 3306 -u admin -p
+```
+2. Password to get into MySQL CLI
+```
+your password
+```
+
+<!-- USAGE -->
+
+## Usage
+
+- Run Redis server before running `backend`
+- Run `backend` running `frontend`
+- Run `frontend`
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ROADMAP -->
+
+## Roadmap
+
+- [x] Project Planning (Spring 2023)
+    - [x] What has been accomplished
+     
+- [x] Released Beta (Summer 2023)
+    - [x] What has been accomplished
+     
+- [x] Product Launch (Fall 2023)
+    - [x] What has been accomplished 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+
+* [Flask Documentation](https://flask.palletsprojects.com/)
+* [ReactJS Documentation](https://reactjs.org/)
+* [React Router Documentation](https://reactrouter.com/)
+* [Raspberry Pi Pico W Documentation](https://www.raspberrypi.org/documentation/pico/)
+* [Raspberry Pi Pico W SDK](https://github.com/raspberrypi/pico-sdk/)
+* [TailwindCSS Documentation](https://tailwindcss.com/docs)
+* [Redis Documentation](https://redis.io/documentation)
+* [Axios Documentation](https://axios-http.com/docs/intro)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/diego-ruben-cruz/readme.svg?style=for-the-badge
+[contributors-url]: https://github.com/diego-ruben-cruz/MorteSense/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/diego-ruben-cruz/readme.svg?style=for-the-badge
+[forks-url]: https://github.com/diego-ruben-cruz/MorteSense/forks
+[stars-shield]: https://img.shields.io/github/stars/diego-ruben-cruz/readme.svg?style=for-the-badge
+[stars-url]: https://github.com/diego-ruben-cruz/MorteSense/stargazers
+[issues-shield]: https://img.shields.io/github/issues/diego-ruben-cruz/readme.svg?style=for-the-badge
+[issues-url]: https://github.com/diego-ruben-cruz/MorteSense/issues
+[license-shield]: https://img.shields.io/github/license/diego-ruben-cruz/readme.svg?style=for-the-badge
+[license-url]: https://github.com/diego-ruben-cruz/MorteSense/blob/master/LICENSE
