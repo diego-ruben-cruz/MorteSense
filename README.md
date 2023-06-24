@@ -127,13 +127,6 @@ To get a local copy up and running follow these simple example steps.
 * Postman
   - filename
 
-* Mobile CLI
-  - cd project_folder
-  
-  ```
-  java -cp starbucks-app.jar -Dapiurl="http://localhost:8080" -Dapikey="2H3fONTa8ugl1IcVS7CjLPnPIS2Hp9dJ" -Dregister="5012349" starbucks.Main 2>debug.log
-  ```
-
 * AWS RDS connection
 1. Command to get into MySQL CLI
 ```
