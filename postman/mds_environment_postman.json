@@ -1,0 +1,27 @@
+{
+	"id": "e0b89e96-a023-4d69-9add-f6f8aa95e3f2",
+	"name": "MOTION_DETECTOR_SENSOR",
+	"values": [
+		{
+			"key": "host",
+			"value": "127.0.0.1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "port",
+			"value": "5000",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2023-06-22T04:33:32.532Z",
+	"_postman_exported_using": "Postman/10.15.2"
+}
