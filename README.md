@@ -12,7 +12,9 @@
 
 <!-- PROJECT LOGO -->
 <br />
-  <h3 align="center">DIY Security. Microwave Motion Detector Sensor</h3>
+  <h3 align="center">DIY Security.</h3>
+  <h3 align="center">Microwave Motion Detector Sensor</h3>
+
 
 <p align="center">
   <img src="https://github.com/diego-ruben-cruz/MorteSense/assets/22685770/951ab71b-7e41-438f-ac96-d43e82af6f04.jpg" alt="My Image" width="1000" height="auto">
@@ -164,14 +166,16 @@ your password
   - [x] Created Semi-Formal Project Progress Report
   - [x] Created GANTT Chart for Project Development Progress
   - [x] Peformed basic hardware interfacing and diagnostics
-- [] Released Beta (Summer 2023)
-  - [] Create Initial Pages for web app client
-  - [] Create Prototype I for Hardware Enclosure
-  - [] Create Prototype II for Hardware Enclosure
-- [] Product Launch (Fall 2023)
-  - [] Test full-fledged prototype
-  - [] Perform final revisions on product
-  - [] Prepare product for public release with Project Report
+
+[] Released Beta (Summer 2023)
+[] Create Initial Pages for web app client
+[] Create Prototype I for Hardware Enclosure
+[] Create Prototype II for Hardware Enclosure
+
+[] Product Launch (Fall 2023)
+[] Test full-fledged prototype
+[] Perform final revisions on product
+[] Prepare product for public release with Project Report
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
