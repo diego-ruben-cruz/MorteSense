@@ -71,7 +71,7 @@ This is the comprehensive project for CMPE 195 at San Jose State University, dur
 
 ## Inspiration
 
--
+- State of the Art: Passive Infrared (PIR) Motion Sensor Systems
 
 ## Challenges we ran into
 
@@ -159,11 +159,19 @@ your password
 ## Roadmap
 
 - [x] Project Planning (Spring 2023)
-  - [x] What has been accomplished
+  - [x] Created Project Schedule
+  - [x] Created Software Specifications/Requirements Document
+  - [x] Created Semi-Formal Project Progress Report
+  - [x] Created GANTT Chart for Project Development Progress
+  - [x] Peformed basic hardware interfacing and diagnostics
 - [] Released Beta (Summer 2023)
-  - [] What has been accomplished
+  - [] Create Initial Pages for web app client
+  - [] Create Prototype I for Hardware Enclosure
+  - [] Create Prototype II for Hardware Enclosure
 - [] Product Launch (Fall 2023)
-  - [] What has been accomplished
+  - [] Test full-fledged prototype
+  - [] Perform final revisions on product
+  - [] Prepare product for public release with Project Report
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
