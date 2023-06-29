@@ -87,7 +87,7 @@ This is the comprehensive project for CMPE 195 at San Jose State University, dur
 
 ## Architecture
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 ### Built With
 
