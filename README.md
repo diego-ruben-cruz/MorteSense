@@ -87,8 +87,6 @@ This is the comprehensive project for CMPE 195 at San Jose State University, dur
 
 ## Architecture
 
-![image](https://github.com/diego-ruben-cruz/MorteSense/assets/22685770/f52b7501-fd80-4983-8fb2-fac79bbf145e)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
@@ -162,21 +160,23 @@ your password
 ## Roadmap
 
 - [x] Project Planning (Spring 2023)
+
   - [x] Created Project Schedule
   - [x] Created Software Specifications/Requirements Document
   - [x] Created Semi-Formal Project Progress Report
   - [x] Created GANTT Chart for Project Development Progress
   - [x] Peformed basic hardware interfacing and diagnostics
 
-[] Released Beta (Summer 2023)
-[] Create Initial Pages for web app client
-[] Create Prototype I for Hardware Enclosure
-[] Create Prototype II for Hardware Enclosure
+- Released Beta (Summer 2023)
 
-[] Product Launch (Fall 2023)
-[] Test full-fledged prototype
-[] Perform final revisions on product
-[] Prepare product for public release with Project Report
+  - Create Initial Pages for web app client
+  - Create Prototype I for Hardware Enclosure
+  - Create Prototype II for Hardware Enclosure
+
+- Product Launch (Fall 2023)
+  - Test full-fledged prototype
+  - Perform final revisions on product
+  - Prepare product for public release with Project Report
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -192,7 +192,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+Here are some resources we made use of while developing, for those who wish to build on our work:
 
 - [Flask Documentation](https://flask.palletsprojects.com/)
 - [ReactJS Documentation](https://reactjs.org/)
