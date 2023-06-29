@@ -18,7 +18,7 @@
   <h3 align="center">Microwave Motion Detector Sensor</h3>
 
 <p align="center">
-  <img src="https://github.com/diego-ruben-cruz/MorteSense/assets/22685770/951ab71b-7e41-438f-ac96-d43e82af6f04.jpg" alt="My Image" width="1000" height="auto">
+  <img src="https://github.com/diego-ruben-cruz/MorteSense/blob/main/frontend/public/logo.png" alt="My Image" width="1000" height="auto">
 </p>
   <p align="center">
     <br />
