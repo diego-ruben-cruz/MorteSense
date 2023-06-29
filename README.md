@@ -1,10 +1,12 @@
 <a name="readme-top"></a>
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
+<!-- [![Contributors][contributors-shield]][contributors-url] -->
+<!-- [![Forks][forks-shield]][forks-url] -->
+<!-- [![Stargazers][stars-shield]][stars-url] -->
+
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+
+<!-- [![MIT License][license-shield]][license-url] -->
 
 <!-- ABOUT THE PROJECT -->
 
@@ -14,7 +16,6 @@
 <br />
   <h3 align="center">DIY Security.</h3>
   <h3 align="center">Microwave Motion Detector Sensor</h3>
-
 
 <p align="center">
   <img src="https://github.com/diego-ruben-cruz/MorteSense/assets/22685770/951ab71b-7e41-438f-ac96-d43e82af6f04.jpg" alt="My Image" width="1000" height="auto">
