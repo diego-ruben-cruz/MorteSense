@@ -8,47 +8,12 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{listings}
-\lstdefinelanguage{JavaScript}{
-  keywords={const, let, var, function, return, if, else, for, while, do, switch, case, break},
-  keywordstyle=\color{blue}\bfseries,
-  ndkeywords={class, export, boolean, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\bfseries,
-  identifierstyle=\color{black},
-  sensitive=false,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
-  morestring=[b]',
-  morestring=[b]"
-}
-\lstdefinelanguage{Java}{
-  keywords={abstract, assert, boolean, break, byte, case, catch, char, class, const, continue, default, do, double, else, enum, extends, final, finally, float, for, goto, if, implements, import, instanceof, int, interface, long, native, new, package, private, protected, public, return, short, static, strictfp, super, switch, synchronized, this, throw, throws, transient, try, void, volatile, while},
-  keywordstyle=\color{blue}\bfseries,
-  ndkeywords={boolean, byte, char, class, double, enum, float, int, long, short, var},
-  ndkeywordstyle=\color{purple}\bfseries,
-  identifierstyle=\color{black},
-  sensitive=false,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  commentstyle=\color{gray}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
-  morestring=[b]',
-  morestring=[b]"
-}
-\lstset{
-  basicstyle=\ttfamily\small,
-  breaklines=true,
-  columns=fullflexible,
-  showstringspaces=false,
-  commentstyle=\color{gray}\upshape
-}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{MorteSense \\A Java Library for Building Regular Expressions}
+\title{MorteSense \\DIY Home Security}
 
 \author{\IEEEauthorblockN{Shohin Abdulkhamidov}
     \IEEEauthorblockA{\textit{Dept. of Computer Science} \\
@@ -66,14 +31,21 @@
     \IEEEauthorblockA{\textit{Dept. of Computer Science} \\
         \textit{San Jose State University}\\
         San Jose, United States \\
-        saptarshi.sengupta@sjsu.edu}
-        \and
+        diego.garciacarrasco@sjsu.edu}
+    \and
     \IEEEauthorblockN{Spartak Gevorgyan}
     \IEEEauthorblockA{\textit{Dept. of Computer Science} \\
         \textit{San Jose State University}\\
         San Jose, United States \\
-        saptarshi.sengupta@sjsu.edu}
-    
+        spartak.gevorgyan@sjsu.edu}
+    \and
+    \IEEEauthorblockN{Faramarz Mortezaie}
+    \IEEEauthorblockA{\textit{Dept. of Engineering} \\
+        \textit{San Jose State University}\\
+        San Jose, United States \\
+        faramarz.mortezaie@sjsu.edu}
+
+
 
 }
 
@@ -81,13 +53,19 @@
 \maketitle
 
 \begin{abstract}
-    Regular expressions are essential tools for developers working with text data.
-    However, constructing regular expressions can be a tedious and error-prone task when dealing with longform string literals.
-    To simplify this process for Java/Kotlin developers, we have developed a Java library called RegexRiot.
-    The library offers a straightforward and intuitive way of constructing regular expressions by using a chain of
-    function calls that describe the pattern to match.
-    While similar projects exist for JavaScript, there is a lack of such libraries for Java/Kotlin.
-    This project aims to bridge this gap and provide a solution for developers working with Java/Kotlin.
+    In recent years, DIY security system technology has been simplified. It has become cheaper for the general public. 
+    This includes the rise of brands focused on smart home security, such as Ring, Blink, Wyze, SimpliSafe, and Vivint, 
+    which offer products such as front-door cameras, infrared motion sensors/detectors, and in-home cameras 
+    providing different views of the house.
+
+    One notable shortcoming of these product ecosystems is their dependence on a mobile application and a smartphone 
+    capable of running the application. If the application is no longer supported or the company goes out of business, 
+    the hardware may not function as intended, creating unnecessary e-waste and unsustainable security practices.
+
+    This project addresses the dependence on a smartphone application by using SMS text messaging in a modular motion 
+    detection security system. The system will be an open ecosystem that can be tailored to the user's requirements and 
+    specifications and will be more sustainable, persisting even if manufacturer support is no longer available.
+
 \end{abstract}
 
 \begin{IEEEkeywords}
