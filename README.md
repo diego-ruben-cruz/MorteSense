@@ -61,7 +61,7 @@
 
 ## About The Project
 
-<img width="506" alt="image" src="https://github.com/diego-ruben-cruz/MorteSense/blob/main/frontend/public/img.png">
+<img width="253" alt="image" src="https://github.com/diego-ruben-cruz/MorteSense/blob/main/frontend/public/img.png">
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
