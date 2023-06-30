@@ -14,8 +14,7 @@
 
 <!-- PROJECT LOGO -->
 <br />
-  <h3 align="center">DIY Security.</h3>
-  <h3 align="center">Microwave Motion Detector Sensor</h3>
+  <h3 align="center">DIY Security. Microwave Motion Detector Sensor</h3>
 
 <p align="center">
   <img src="https://github.com/diego-ruben-cruz/MorteSense/blob/main/frontend/public/logo.png" alt="My Image" width="1000" height="auto">
@@ -28,7 +27,7 @@
     ·
     <a href="https://github.com/diego-ruben-cruz/MorteSense/issues">Report Bug</a>
     ·
-    <a href="https://github.com/diego-ruben-cruz/MorteSense/issues">Request Feature</a>
+    <a href="https://github.com/diego-ruben-cruz/MorteSense/issues">Request a Feature</a>
   </p>
 </div>
 
@@ -62,7 +61,7 @@
 
 ## About The Project
 
-<img width="1012" alt="image" src="https://github.com/diego-ruben-cruz/MorteSense/assets/22685770/87117ac6-9d99-415a-bb4e-8ee2301747c8">
+<img width="1012" alt="image" src="https://github.com/diego-ruben-cruz/MorteSense/blob/main/frontend/public/img.png">
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
