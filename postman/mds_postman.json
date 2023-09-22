@@ -1,0 +1,700 @@
+{
+	"info": {
+		"_postman_id": "bd6d40f1-6ee6-421d-9974-ba12dfb84b2e",
+		"name": "MOTION_DETECTOR_SENSOR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4250027"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"protocolProfileBehavior": {
+				"strictSSL": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"insidious1111@email.com\",\n    \"password\": \"ShoAdmin97S\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/register",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "@me",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4Njg2OTI0NiwianRpIjoiMDA4YzY3MTUtMTU0ZC00NDdlLWI3MTItOTE1NzVlYWY1NmU4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImU2NTYzMTg5LTAzNzgtNGI4MC04ZmNkLTMwZmQ1ZmQzZTdmMyIsIm5iZiI6MTY4Njg2OTI0NiwiZXhwIjoxNjg2ODcwMTQ2fQ.Se6OCMPGkd1oGojcBCh4MP2TcNJgQl499vVZ_Rb5ssY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"insidious17@email.com\",\n    \"password\": \"ShoAdmin97S\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/@me",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"@me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NTQwNjY1NywianRpIjoiZWMyZDQ4MGYtZjNmMy00M2RhLTg3MzQtYTU4NGY3MzEyZmIyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjlmMjYxNTYzLWI5ZDctNGQ0My1hYTFjLTg5MzcxNDVkNzM3MSIsIm5iZiI6MTY5NTQwNjY1NywiZXhwIjoxNjk1NDA3NTU3fQ.6JAm5QJdGfXJnTJIzFF9bptQY33zA7JQj_i3z_sdKSk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/users",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4Njg2MTk4MywianRpIjoiNjI0NDZhNDAtZTFhOC00MTg0LTg5NmMtMDZlNGM5MjIxMzdhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjAzYTZkNTM1LTEwMDEtNDhlNy1iY2FmLTdhNTQ1NDE0MjM0OSIsIm5iZiI6MTY4Njg2MTk4MywiZXhwIjoxNjg2ODYyODgzfQ.Nh39HXQNF0x3BqZyen1M27brqZ8rTCNmQkeK0sEIVWE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"insidious17@email.com\",\n    \"password\": \"ShoAdmin97S\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/logout",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"sos@sas.com\",\n    \"password\": \"password123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/login",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NzIxNDI3NywianRpIjoiZDAzZGY4ODItYTY4Mi00MDU0LTllODktOTQyMGVlZjY1OTQzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjI0NjU5ZDY5LWFiYzEtNGIwNi04Y2NiLTYyMDBmYjI2Y2VmMSIsIm5iZiI6MTY4NzIxNDI3NywiZXhwIjoxNjg3MjE1MTc3fQ.86ApQxtzF9SjPMaGWrR8S9h9jB9yTU7826GsS72Ikj0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"d@n.com\",\n    \"password\": \"dn\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/delete_account",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"delete_account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Password",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NzMwOTk0MywianRpIjoiMDBhZTNkMTMtYmVjMS00ZTNhLWI3NDYtNTlhYmVjYzE1YjJmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjIyYWIzNTNhLWU4YjgtNGI4My1iNmYxLTJlYTAzN2Y3YjQ2NCIsIm5iZiI6MTY4NzMwOTk0MywiZXhwIjoxNjg3MzEwODQzfQ.tgS8yCgjfnc1jDzIv_TUuFjkc5jquZifDCFaAQcbzr8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"current_password\": \"sa\",\n    \"new_password\": \"ss\",\n    \"confirm_password\": \"ss\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/change_password",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"change_password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit User Details",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NzMwODQ5NywianRpIjoiZWYzN2E2MzMtM2ZjMi00ODM2LWI4ZTYtNDI2MmU4ODZlMzEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjE2NWMxZTlhLWQxODEtNGI3Zi1hYWUxLTAxZGM5MWViMGMyZiIsIm5iZiI6MTY4NzMwODQ5NywiZXhwIjoxNjg3MzA5Mzk3fQ.CsCKmK1IXBV8D2EvgelIoM0-CVC2tHB_g0sH3EHKNc0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"new_name\": \"Jane Doe\",\n  \"new_email\": \"jane.doe@example.com\",\n  \"new_username\": \"janedoe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/edit_user",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"edit_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Profile Picture",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NzIzMDYzMiwianRpIjoiZTMxNzE3MTEtZTYxZS00ZWY1LWI0NjAtNWFmNjk0NTBkNDFlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImU2MzA3NzdkLTg4YTctNDI2Ni05ZWFlLTg3OWJmZDc2ODhiZiIsIm5iZiI6MTY4NzIzMDYzMiwiZXhwIjoxNjg3MjMxNTMyfQ.6EB7QHLWUGWLZQ0TKNX1CZyd5_GIxlKCGzFtNQxHR44",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"type": "file",
+							"src": "/Applications/MAMP/htdocs/CMPE195a-HomeRepo-2023/frontend/src/logo.svg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/upload_image",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"upload_image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SMS",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"phone_number\": \"+14082046071\",\n  \"message\": \"Hello, this is a test message!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/send-sms",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"send-sms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Device",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NTQwNjY1NywianRpIjoiZWMyZDQ4MGYtZjNmMy00M2RhLTg3MzQtYTU4NGY3MzEyZmIyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjlmMjYxNTYzLWI5ZDctNGQ0My1hYTFjLTg5MzcxNDVkNzM3MSIsIm5iZiI6MTY5NTQwNjY1NywiZXhwIjoxNjk1NDA3NTU3fQ.6JAm5QJdGfXJnTJIzFF9bptQY33zA7JQj_i3z_sdKSk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"My Device Name\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/create_device",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"create_device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Device",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NTQwNjY1NywianRpIjoiZWMyZDQ4MGYtZjNmMy00M2RhLTg3MzQtYTU4NGY3MzEyZmIyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjlmMjYxNTYzLWI5ZDctNGQ0My1hYTFjLTg5MzcxNDVkNzM3MSIsIm5iZiI6MTY5NTQwNjY1NywiZXhwIjoxNjk1NDA3NTU3fQ.6JAm5QJdGfXJnTJIzFF9bptQY33zA7JQj_i3z_sdKSk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/device/d10d6b20-e90b-4eb6-93d5-e4f5a78728b4",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"device",
+						"d10d6b20-e90b-4eb6-93d5-e4f5a78728b4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Devices",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NTQwNjY1NywianRpIjoiZWMyZDQ4MGYtZjNmMy00M2RhLTg3MzQtYTU4NGY3MzEyZmIyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjlmMjYxNTYzLWI5ZDctNGQ0My1hYTFjLTg5MzcxNDVkNzM3MSIsIm5iZiI6MTY5NTQwNjY1NywiZXhwIjoxNjk1NDA3NTU3fQ.6JAm5QJdGfXJnTJIzFF9bptQY33zA7JQj_i3z_sdKSk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/devices",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Device",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NTQwNjY1NywianRpIjoiZWMyZDQ4MGYtZjNmMy00M2RhLTg3MzQtYTU4NGY3MzEyZmIyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjlmMjYxNTYzLWI5ZDctNGQ0My1hYTFjLTg5MzcxNDVkNzM3MSIsIm5iZiI6MTY5NTQwNjY1NywiZXhwIjoxNjk1NDA3NTU3fQ.6JAm5QJdGfXJnTJIzFF9bptQY33zA7JQj_i3z_sdKSk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"My New Device\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/update_device/d10d6b20-e90b-4eb6-93d5-e4f5a78728b4",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"update_device",
+						"d10d6b20-e90b-4eb6-93d5-e4f5a78728b4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Device",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"phone_number\": \"+14082046071\",\n  \"message\": \"Hello, this is a test message!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/send-sms",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"send-sms"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
