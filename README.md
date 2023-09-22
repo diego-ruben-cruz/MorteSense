@@ -1,20 +1,24 @@
 <a name="readme-top"></a>
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
+<!-- [![Contributors][contributors-shield]][contributors-url] -->
+<!-- [![Forks][forks-shield]][forks-url] -->
+<!-- [![Stargazers][stars-shield]][stars-url] -->
+
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+
+<!-- [![MIT License][license-shield]][license-url] -->
 
 <!-- ABOUT THE PROJECT -->
+
 # Technical Documentation
 
 <!-- PROJECT LOGO -->
 <br />
-  <h3 align="center">DYI Security. Microwave Motion Detector Sensor</h3>
+  <h3 align="center">DIY Security.</h3>
+  <h3 align="center">Microwave Motion Detector Sensor</h3>
 
 <p align="center">
-  <img src="https://github.com/diego-ruben-cruz/MorteSense/assets/22685770/951ab71b-7e41-438f-ac96-d43e82af6f04.jpg" alt="My Image" width="1000" height="auto">
+  <img src="https://github.com/diego-ruben-cruz/MorteSense/blob/main/frontend/public/logo.png" alt="My Image" width="1000" height="auto">
 </p>
   <p align="center">
     <br />
@@ -55,35 +59,35 @@
 </details>
 
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 <img width="1012" alt="image" src="https://github.com/diego-ruben-cruz/MorteSense/assets/22685770/87117ac6-9d99-415a-bb4e-8ee2301747c8">
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-This is the comprehensive project for CMPE 195B (Senior Design Project II) at San Jose State University, for the Fall 2023 semester. This project is a multi-tiered, end-to-end system composed of several elements:
+This is the comprehensive project for CMPE 195 at San Jose State University, during 2023. This project is a multi-tiered, end-to-end system comprised of several elements:
 
-* A web-based application enabling customers to oversee their sensor' data
-* A MorteSense API responsible for processing requests coming from the Client app
-* A database designed to maintain records of users and sensors
+- A web-based application enabling customers to oversee their sensor' data
+- A MorteSense API responsible for processing requests coming from the client app
+- A database designed to maintain records of users and sensors
 
 ## Inspiration
 
-Add me anything
+- State of the Art: Passive Infrared (PIR) Motion Sensor Systems
 
 ## Challenges we ran into
 
-Add me anything
+- Power Delivery
 
 ## Accomplishments we are proud of
 
-Add me anything
+- Learning LaTeX to create the final project report
+- Using CAD to design an enclosure for the hardware
 
 ## Architecture
 
-![image](https://github.com/diego-ruben-cruz/MorteSense/assets/22685770/f52b7501-fd80-4983-8fb2-fac79bbf145e)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 ### Built With
 
@@ -101,38 +105,42 @@ Add me anything
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)
 ![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
-## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+## Getting Started
 
 ### Prerequisites and Installation
 
 #### Backend
-* Requirements.txt
-* Redis server
+
+- Requirements.txt
+- Redis server
 
 #### Frontend
-* Node Modules
-  ```npm run install```
+
+- Node Modules `npm run install`
 
 #### API Tooling
-* Postman
+
+- Postman
+
   - filename
 
-* AWS RDS connection
+- AWS RDS connection
+
 1. Command to get into MySQL CLI
+
 ```
 mysql -h [DATABASE_NAME].[HOST] -P 3306 -u admin -p
 ```
+
 2. Password to get into MySQL CLI
+
 ```
 your password
 ```
@@ -152,17 +160,28 @@ your password
 ## Roadmap
 
 - [x] Project Planning (Spring 2023)
-    - [x] What has been accomplished
-     
-- [x] Released Beta (Summer 2023)
-    - [x] What has been accomplished
-     
-- [x] Product Launch (Fall 2023)
-    - [x] What has been accomplished 
+
+  - [x] Created Project Schedule
+  - [x] Created Software Specifications/Requirements Document
+  - [x] Created Semi-Formal Project Progress Report
+  - [x] Created GANTT Chart for Project Development Progress
+  - [x] Peformed basic hardware interfacing and diagnostics
+
+- Released Beta (Summer 2023)
+
+  - Create Initial Pages for web app client
+  - Create Prototype I for Hardware Enclosure
+  - Create Prototype II for Hardware Enclosure
+
+- Product Launch (Fall 2023)
+  - Test full-fledged prototype
+  - Perform final revisions on product
+  - Prepare product for public release with Project Report
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
@@ -170,23 +189,25 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+Here are some resources we made use of while developing, for those who wish to build on our work:
 
-* [Flask Documentation](https://flask.palletsprojects.com/)
-* [ReactJS Documentation](https://reactjs.org/)
-* [React Router Documentation](https://reactrouter.com/)
-* [Raspberry Pi Pico W Documentation](https://www.raspberrypi.org/documentation/pico/)
-* [Raspberry Pi Pico W SDK](https://github.com/raspberrypi/pico-sdk/)
-* [TailwindCSS Documentation](https://tailwindcss.com/docs)
-* [Redis Documentation](https://redis.io/documentation)
-* [Axios Documentation](https://axios-http.com/docs/intro)
+- [Flask Documentation](https://flask.palletsprojects.com/)
+- [ReactJS Documentation](https://reactjs.org/)
+- [React Router Documentation](https://reactrouter.com/)
+- [Raspberry Pi Pico W Documentation](https://www.raspberrypi.org/documentation/pico/)
+- [Raspberry Pi Pico W SDK](https://github.com/raspberrypi/pico-sdk/)
+- [TailwindCSS Documentation](https://tailwindcss.com/docs)
+- [Redis Documentation](https://redis.io/documentation)
+- [Axios Documentation](https://axios-http.com/docs/intro)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/diego-ruben-cruz/readme.svg?style=for-the-badge
 [contributors-url]: https://github.com/diego-ruben-cruz/MorteSense/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/diego-ruben-cruz/readme.svg?style=for-the-badge
