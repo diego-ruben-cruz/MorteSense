@@ -22,4 +22,4 @@ bcrypt = Bcrypt(app)
 CORS(app, supports_credentials=True, methods=["GET", "POST", "PUT", "DELETE"])
 server_session = Session(app)
 
-from src.routes import auth, user, twilio
+from src.routes import auth, user, device, alerts, twilio

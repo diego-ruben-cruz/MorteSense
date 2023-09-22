@@ -1,4 +1,4 @@
-from flask import request, jsonify, make_response, render_template
+from flask import request, jsonify, make_response
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from src.app import app
 from src.database import mysql_connection

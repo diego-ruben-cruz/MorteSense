@@ -6,3 +6,11 @@ class User:
         self.name = name
         self.username = username
         self.roles = roles
+
+class Device:
+    def __init__(self, id, name, user_id):
+        self.id = id
+        self.name = name
+        self.user_id = user_id
+
+

@@ -1,16 +1,23 @@
 import mysql.connector
 
 # MySQL Configuration
-mysql_host = "mds-rds.cqkrqdqrehjj.us-east-1.rds.amazonaws.com"
-mysql_user = "admin"
-mysql_password = "mdspr001"
+# mysql_host = "mds-rds.cqkrqdqrehjj.us-east-1.rds.amazonaws.com"
+# mysql_user = "admin"
+# mysql_password = "mdspr001"
+# mysql_database = "mds-rds"
+
+mysql_host = "localhost"
+mysql_user = "root"
+mysql_password = "root"
+mysql_database = "motion_database"
 
 try:
     mysql_connection = mysql.connector.connect(
         host=mysql_host,
         user=mysql_user,
         password=mysql_password,
-        port=3306
+        port=8889,
+        database=mysql_database,
     )
     print("Connected to the database successfully!")
 
@@ -22,9 +29,10 @@ try:
 
     # If 'mds-rds' is not in the list of databases, create it
     cursor.execute("CREATE DATABASE IF NOT EXISTS `mds-rds`;")
-    cursor.execute("USE `mds-rds`;")
+    cursor.execute("USE `motion_database`;")
+
     cursor.execute("SHOW TABLES LIKE 'users';")
-    tables = cursor.fetchall()  # This should print the name of the 'users' table if it exists
+    tables = cursor.fetchall()
 
     # Create 'users' table if it does not exist
     if ('users',) not in tables:
@@ -41,10 +49,25 @@ try:
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
         """)
 
-    cursor.close()
+    cursor.execute("SHOW TABLES LIKE 'devices';")
+    tables = cursor.fetchall()
+
+    if ('devices',) not in tables:
+        cursor.execute("""
+        CREATE TABLE `devices` (
+          `id` varchar(255) NOT NULL,
+          `name` varchar(255) NOT NULL,
+          `user_id` varchar(255) NOT NULL,
+          PRIMARY KEY (`id`),
+          FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+        """)
+
+    mysql_connection.commit()
+
 
 except mysql.connector.Error as error:
     print("Failed to connect to the database:", error)
 
 # MySQL CLI: mysql -h mds-rds.cqkrqdqrehjj.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
-# Enter password: mdspr001
+# Enter password: motion123

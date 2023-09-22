@@ -7,10 +7,36 @@ from flask import request
 from werkzeug.utils import secure_filename
 import os
 
-# This is the path to the upload directory
 app.config['UPLOAD_FOLDER'] = 'public/uploads/'
-# These are the extension that we are accepting to be uploaded
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'svg'}
+
+
+@app.route("/users", methods=["GET"])
+def get_all_users():
+
+    with mysql_connection.cursor() as cursor:
+        query = "SELECT * FROM users"
+        cursor.execute(query)
+        users = cursor.fetchall()
+
+    if not users:
+        return jsonify({"error": "No users found"}), 404
+
+    # Create a list of user dictionaries
+    user_list = []
+    for user in users:
+        user_dict = {
+            "id": user[0],
+            "email": user[1],
+            "password": user[2],
+            "name": user[3],
+            "username": user[4],
+            "roles": "2001"  # You can set roles as needed
+        }
+        user_list.append(user_dict)
+
+    return jsonify(user_list), 200
+
 
 
 @app.route("/@me", methods=["GET"])
