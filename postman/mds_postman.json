@@ -79,6 +79,58 @@
 			"response": []
 		},
 		{
+			"name": "Get All Users",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NTQwNjY1NywianRpIjoiZWMyZDQ4MGYtZjNmMy00M2RhLTg3MzQtYTU4NGY3MzEyZmIyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjlmMjYxNTYzLWI5ZDctNGQ0My1hYTFjLTg5MzcxNDVkNzM3MSIsIm5iZiI6MTY5NTQwNjY1NywiZXhwIjoxNjk1NDA3NTU3fQ.6JAm5QJdGfXJnTJIzFF9bptQY33zA7JQj_i3z_sdKSk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/users",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Logout",
 			"request": {
 				"auth": {
@@ -144,7 +196,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"sa@sa\",\n    \"password\": \"sa\"\n}",
+					"raw": "{\n    \"email\": \"sos@sas.com\",\n    \"password\": \"password123\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -377,6 +429,249 @@
 			],
 			"request": {
 				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"phone_number\": \"+14082046071\",\n  \"message\": \"Hello, this is a test message!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/send-sms",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"send-sms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Device",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NTQwNjY1NywianRpIjoiZWMyZDQ4MGYtZjNmMy00M2RhLTg3MzQtYTU4NGY3MzEyZmIyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjlmMjYxNTYzLWI5ZDctNGQ0My1hYTFjLTg5MzcxNDVkNzM3MSIsIm5iZiI6MTY5NTQwNjY1NywiZXhwIjoxNjk1NDA3NTU3fQ.6JAm5QJdGfXJnTJIzFF9bptQY33zA7JQj_i3z_sdKSk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"My Device Name\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/create_device",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"create_device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Device",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NTQwNjY1NywianRpIjoiZWMyZDQ4MGYtZjNmMy00M2RhLTg3MzQtYTU4NGY3MzEyZmIyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjlmMjYxNTYzLWI5ZDctNGQ0My1hYTFjLTg5MzcxNDVkNzM3MSIsIm5iZiI6MTY5NTQwNjY1NywiZXhwIjoxNjk1NDA3NTU3fQ.6JAm5QJdGfXJnTJIzFF9bptQY33zA7JQj_i3z_sdKSk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/device/d10d6b20-e90b-4eb6-93d5-e4f5a78728b4",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"device",
+						"d10d6b20-e90b-4eb6-93d5-e4f5a78728b4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Devices",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NTQwNjY1NywianRpIjoiZWMyZDQ4MGYtZjNmMy00M2RhLTg3MzQtYTU4NGY3MzEyZmIyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjlmMjYxNTYzLWI5ZDctNGQ0My1hYTFjLTg5MzcxNDVkNzM3MSIsIm5iZiI6MTY5NTQwNjY1NywiZXhwIjoxNjk1NDA3NTU3fQ.6JAm5QJdGfXJnTJIzFF9bptQY33zA7JQj_i3z_sdKSk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/devices",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Device",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NTQwNjY1NywianRpIjoiZWMyZDQ4MGYtZjNmMy00M2RhLTg3MzQtYTU4NGY3MzEyZmIyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjlmMjYxNTYzLWI5ZDctNGQ0My1hYTFjLTg5MzcxNDVkNzM3MSIsIm5iZiI6MTY5NTQwNjY1NywiZXhwIjoxNjk1NDA3NTU3fQ.6JAm5QJdGfXJnTJIzFF9bptQY33zA7JQj_i3z_sdKSk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"My New Device\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/update_device/d10d6b20-e90b-4eb6-93d5-e4f5a78728b4",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"update_device",
+						"d10d6b20-e90b-4eb6-93d5-e4f5a78728b4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Device",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
 				"header": [],
 				"body": {
 					"mode": "raw",
