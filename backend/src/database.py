@@ -36,7 +36,7 @@ try:
 
     if ('users',) not in tables:
         cursor.execute("""
-        CREATE TABLE `users` (
+        CREATE TABLE IF NOT EXISTS `users` (
           `id` varchar(255) NOT NULL,
           `email` varchar(255) NOT NULL,
           `password` varchar(255) NOT NULL,
@@ -53,7 +53,7 @@ try:
 
     if ('devices',) not in tables:
         cursor.execute("""
-        CREATE TABLE `devices` (
+        CREATE TABLE IF NOT EXISTS  `devices` (
           `id` varchar(255) NOT NULL,
           `name` varchar(255) NOT NULL,
           `user_id` varchar(255) NOT NULL,
@@ -67,7 +67,7 @@ try:
 
     if ('motion-detections',) not in tables:
         cursor.execute("""
-        CREATE TABLE `motion-detections` ( 
+        CREATE TABLE IF NOT EXISTS  `motion-detections` ( 
           `id` varchar(255) NOT NULL,
           `timestamp` varchar(255) NOT NULL,
           `user_id` varchar(255) NOT NULL,
@@ -80,11 +80,6 @@ try:
 
 except mysql.connector.Error as error:
     print("Failed to connect to the database:", error)
-
-finally:
-    # Close cursor and connection
-    cursor.close()
-    mysql_connection.close()
 
 
 # MySQL CLI: mysql -h mds-rds.cqkrqdqrehjj.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
