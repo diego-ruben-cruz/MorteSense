@@ -34,7 +34,6 @@ try:
     cursor.execute("SHOW TABLES LIKE 'users';")
     tables = cursor.fetchall()
 
-    # Create 'users' table if it does not exist
     if ('users',) not in tables:
         cursor.execute("""
         CREATE TABLE `users` (
@@ -49,7 +48,7 @@ try:
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
         """)
 
-    cursor.execute("SHOW TABLES LIKE 'devices';")
+    cursor.execute("SHOW TABLES LIKE 'motion-detections';")
     tables = cursor.fetchall()
 
     if ('devices',) not in tables:
@@ -63,11 +62,30 @@ try:
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
         """)
 
-    mysql_connection.commit()
+    cursor.execute("SHOW TABLES LIKE 'motion-detections';")
+    tables = cursor.fetchall()
 
+    if ('motion-detections',) not in tables:
+        cursor.execute("""
+        CREATE TABLE `motion-detections` ( 
+          `id` varchar(255) NOT NULL,
+          `timestamp` varchar(255) NOT NULL,
+          `user_id` varchar(255) NOT NULL,
+          PRIMARY KEY (`id`),
+          FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+        """)
+
+    mysql_connection.commit()
 
 except mysql.connector.Error as error:
     print("Failed to connect to the database:", error)
+
+finally:
+    # Close cursor and connection
+    cursor.close()
+    mysql_connection.close()
+
 
 # MySQL CLI: mysql -h mds-rds.cqkrqdqrehjj.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
 # Enter password: motion123

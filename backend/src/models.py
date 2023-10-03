@@ -13,4 +13,8 @@ class Device:
         self.name = name
         self.user_id = user_id
 
-
+class MotionDetections:
+    def __init__(self, id, timestamp, user_id):
+        self.id = id
+        self.timestamp = timestamp
+        self.user_id = user_id
