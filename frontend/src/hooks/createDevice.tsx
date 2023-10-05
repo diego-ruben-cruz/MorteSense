@@ -1,7 +1,8 @@
-// CreateDevice.tsx
+// UseCreateDevice.tsx
 import React, {Fragment, useState} from "react";
 import {Dialog, Transition} from "@headlessui/react";
 import {ExclamationTriangleIcon} from "@heroicons/react/20/solid";
+import {handleCreateDevice} from "../lib/device";
 
 interface CreateDeviceProps {
     onClose: () => void;
@@ -9,14 +10,19 @@ interface CreateDeviceProps {
     open: boolean; // You need to pass the 'open' prop to determine whether the dialog should be open or not.
 }
 
-const CreateDevice: React.FC<CreateDeviceProps> = ({onClose, onCreate, open}) => {
+const useCreateDevice: React.FC<CreateDeviceProps> = ({onClose, onCreate, open}) => {
     const [deviceName, setDeviceName] = useState("");
 
-    const handleCreate = () => {
+    const handleCreate = async () => {
         if (deviceName.trim() !== "") {
-            onCreate(deviceName);
-            setDeviceName("");
-            onClose();
+            await handleCreateDevice({name: deviceName})
+                .then(() => {
+                    setDeviceName("");
+                    onClose();
+                })
+                .catch((error) => {
+                    console.error("Device creation failed CREATEDEVICE:", error);
+                });
         }
     };
 
@@ -74,14 +80,14 @@ const CreateDevice: React.FC<CreateDeviceProps> = ({onClose, onCreate, open}) =>
                                 </div>
                                     <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                         <button
-                                            onClick={onClose}
-                                            className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
-                                            Cancel
+                                            onClick={handleCreate}
+                                            className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm sm:ml-3 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">
+                                            Create
                                         </button>
                                         <button
-                                            onClick={handleCreate}
-                                            className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">
-                                            Create
+                                            onClick={onClose}
+                                            className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:w-auto">
+                                            Cancel
                                         </button>
                                 </div>
                             </Dialog.Panel>
@@ -93,4 +99,4 @@ const CreateDevice: React.FC<CreateDeviceProps> = ({onClose, onCreate, open}) =>
     );
 };
 
-export default CreateDevice;
+export default useCreateDevice;

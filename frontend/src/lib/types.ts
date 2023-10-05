@@ -8,6 +8,12 @@ export interface User {
     email: string;
 }
 
+export interface Device {
+    user_id: string;
+    id: string;
+    name: string;
+}
+
 export interface Navigation {
     name: string;
     href: string;
