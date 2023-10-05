@@ -7,7 +7,7 @@ from src.database import mysql_connection
 
 
 def get_uuid():
-    return str(uuid4())
+    return str(uuid4())[:8]
 
 
 @app.route("/devices", methods=["GET"])
@@ -38,17 +38,19 @@ def create_device():
         return jsonify({"error": "Missing 'name' field in request body"}), 400
 
     name = request.json["name"]
+    message = request.json["message"]
 
     try:
         device_id = get_uuid()
-        query = "INSERT INTO devices (id, name, user_id) VALUES (%s, %s, %s)"  # Include user_id in the query
+        query = "INSERT INTO devices (id, name, message, user_id) VALUES (%s, %s, %s, %s)"  # Include user_id in the query
         cursor = mysql_connection.cursor()
-        cursor.execute(query, (device_id, name, user_id))
+        cursor.execute(query, (device_id, name, message, user_id))
         mysql_connection.commit()
 
         device = Device(
             id=device_id,
             name=name,
+            message=message,
             user_id=user_id
         )
 
@@ -56,6 +58,7 @@ def create_device():
             jsonify({
                 "id": device.id,
                 "name": device.name,
+                "message": message
             })
         )
         return response, 201
@@ -93,8 +96,8 @@ def update_device(device_id):
     data = request.json
 
     with mysql_connection.cursor() as cursor:
-        query = "UPDATE devices SET name = %s WHERE id = %s"
-        cursor.execute(query, (data["name"], device_id))
+        query = "UPDATE devices SET name = %s, message = %s WHERE id = %s"
+        cursor.execute(query, (data["name"], data["message"], device_id))
         mysql_connection.commit()
 
     return jsonify({"message": "Device updated successfully"}), 200

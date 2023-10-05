@@ -7,13 +7,13 @@ export interface UserData {
     name?: string;
     username?: string;
     email?: string;
+    phone_number?: string;
     password?: string;
     current_password?: string;
     new_password?: string;
     confirm_password?: string;
     avatar?: string;
     token?: string;
-    phone?: string;
     roles?: string[];
 }
 
@@ -178,7 +178,6 @@ export const uploadImage = (file: File) => {
 
 export const handleEditUser = (userData: UserData) => {
     const endpoint = "/edit_user";
-
     return new Promise<void>((resolve, reject) => {
         axios
             .post(`${API_BASE_URL}${endpoint}`, userData, {

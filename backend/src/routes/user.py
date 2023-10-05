@@ -31,19 +31,19 @@ def get_all_users():
             "password": user[2],
             "name": user[3],
             "username": user[4],
-            "roles": "2001"  # You can set roles as needed
+            "phone_number": user[5],
+            "roles": "2001",  # You can set roles as needed
         }
         user_list.append(user_dict)
 
     return jsonify(user_list), 200
 
 
-
 @app.route("/@me", methods=["GET"])
 @jwt_required()
-def get_current_user():
+def get_current_user():    
     user_id = get_jwt_identity()
-
+    
     cursor = mysql_connection.cursor()
     query = "SELECT * FROM users WHERE id = %s"
     cursor.execute(query, (user_id,))
@@ -58,7 +58,8 @@ def get_current_user():
         password=result[2],
         name=result[3],
         username=result[4],
-        roles="2001"
+        phone_number=result[5],
+        roles="2001",
     )
 
     return jsonify({
@@ -67,6 +68,7 @@ def get_current_user():
         "username": user.username,
         "email": user.email,
         "password": user.password,
+        "phone_number": user.phone_number
     })
 
 

@@ -35,6 +35,7 @@ try:
       `password` varchar(64) NOT NULL,
       `name` varchar(255) NOT NULL,
       `username` varchar(255) NOT NULL,
+      `phone_number` varchar(255) NOT NULL,
       `avatar` varchar(255),
       `roles` varchar(255) NOT NULL DEFAULT '2001',
       PRIMARY KEY (`id`)
@@ -49,6 +50,7 @@ try:
       `id` varchar(255) NOT NULL,
       `user_id` varchar(255) NOT NULL,
       `name` varchar(255) NOT NULL,
+      `message` varchar(255) DEFAULT "Detected",
       PRIMARY KEY (`id`),
       FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

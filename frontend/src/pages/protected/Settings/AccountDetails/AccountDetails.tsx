@@ -19,6 +19,7 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [name, setName] = useState(user?.name || "");
     const [email, setEmail] = useState(user?.email || "");
+    const [phone_number, setPhoneNumber] = useState(user?.phone_number || "");
     const [username, setUsername] = useState(user?.username || "");
     const [avatar, setAvatar] = useState(user?.avatar || '/male.svg');
     const [, setUser] = useState<UserData | null>(null); // State variable to store the user data
@@ -39,6 +40,7 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
                 ...user,
                 new_name: name,
                 new_email: email,
+                new_phone_number: phone_number,
                 new_username: username,
             };
 
@@ -152,6 +154,19 @@ const AccountDetails = ({ user }: AccountDetailsProps) => {
                                             />
                                         ) : (
                                             <p>Email: {user.email}</p>
+                                        )}
+                                    </div>
+
+                                    <div className="col-span-full">
+                                        {editMode ? (
+                                            <input
+                                                placeholder="Phone number"
+                                                value={phone_number}
+                                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                                className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-rose-500 sm:text-sm"
+                                            />
+                                        ) : (
+                                            <p>Phone number: {user.phone_number}</p>
                                         )}
                                     </div>
 

@@ -12,6 +12,7 @@ export interface Device {
     user_id: string;
     id: string;
     name: string;
+    message: string;
 }
 
 export interface Navigation {

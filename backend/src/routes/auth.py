@@ -4,6 +4,7 @@ from src.app import app
 from src.database import mysql_connection
 from src.models import User
 from uuid import uuid4
+import time
 
 
 def get_uuid():
@@ -16,6 +17,7 @@ def register_user():
     username = request.json["username"]
     email = request.json["email"]
     password = request.json["password"]
+    phone_number = request.json["password"]
 
     # Check if user already exists
     cursor = mysql_connection.cursor(dictionary=True)
@@ -27,9 +29,9 @@ def register_user():
         return jsonify({"error": "User already exists"}), 409
 
     # Insert new user into MySQL
-    query = "INSERT INTO users (id, name, username, email, password) VALUES (%s, %s, %s, %s, %s)"
+    query = "INSERT INTO users (id, name, username, email, password, phone_number) VALUES (%s, %s, %s, %s, %s, %s)"
     user_id = get_uuid()
-    cursor.execute(query, (user_id, name, username, email, password))
+    cursor.execute(query, (user_id, name, username, email, password, phone_number))
     mysql_connection.commit()
 
     # Create a new token with the user id embedded in it
@@ -56,7 +58,7 @@ def login_user():
         return jsonify({"error": "Unauthorized"}), 401
 
     user = User(id=result['id'], email=result['email'], password=result['password'], name=result['name'],
-                username=result['username'], roles="2001")
+                username=result['username'], phone_number=result['phone_number'], roles="2001")
 
     if user.password != password:
         return jsonify({"error": "Unauthorized"}), 401
@@ -155,10 +157,12 @@ def edit_user():
         return jsonify({"error": "No user_id in JWT"}), 400
 
     new_email = request.json.get("new_email")
+    new_phone_number = request.json.get("new_phone_number")
+    print(new_phone_number)
     new_name = request.json.get("new_name")
     new_username = request.json.get("new_username")
 
-    print(f"User ID: {user_id}, New Email: {new_email}, New Name: {new_name}, New Username: {new_username}")
+    print(f"User ID: {user_id}, New Email: {new_email}, New Phone: {new_phone_number}, New Name: {new_name}, New Username: {new_username}")
 
     # Fetch user from MySQL
     cursor = mysql_connection.cursor(dictionary=True)
@@ -173,14 +177,14 @@ def edit_user():
     print(f"Found user: {result}")
 
     # Ensure new_email, new_name, and new_username are not None before proceeding to update
-    if new_email is None or new_name is None or new_username is None:
+    if new_email is None or new_phone_number is None or new_name is None or new_username is None:
         print(
-            f"One or more fields to update are None. new_email: {new_email}, new_name: {new_name}, new_username: {new_username}")
+            f"One or more fields to update are None. new_email: {new_email}, new_phone_number: {new_phone_number}, new_name: {new_name}, new_username: {new_username}")
         return jsonify({"error": "One or more fields to update are None"}), 400
 
     # Update user details in MySQL
-    query = "UPDATE users SET email = %s, name = %s, username = %s WHERE id = %s"
-    cursor.execute(query, (new_email, new_name, new_username, user_id))
+    query = "UPDATE users SET email = %s, phone_number = %s, name = %s, username = %s WHERE id = %s"
+    cursor.execute(query, (new_email, new_phone_number, new_name, new_username, user_id))
     mysql_connection.commit()
 
     print(f"Rows updated: {cursor.rowcount}")

@@ -15,18 +15,24 @@ interface OverviewProps {
     user: UserData | null;
 }
 
+let editDevice: string = "";
+
 const Overview: React.FC<OverviewProps> = ({user}) => {
     const [devices, setDevices] = useState<Device[]>([]);
     const [isCreateDeviceModalOpen, setIsCreateDeviceModalOpen] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [editMode, setEditMode] = useState(false); // State variable to toggle edit mode
     const [newDeviceName, setNewDeviceName] = useState('');
+    const [newDeviceMessage, setNewDeviceMessage] = useState('');
     const [requestSent, setRequestSent] = useState("");
 
     const handleDeviceCreate = async () => {
         if (newDeviceName.trim() !== "") {
             try {
-                const response = await handleCreateDevice({name: newDeviceName});
+                const response = await handleCreateDevice({
+                    name: newDeviceName,         
+                    message: newDeviceMessage, 
+            });
                 if (response === undefined) {
                     console.log("Error occurred during device creation");
                 }
@@ -87,6 +93,7 @@ const Overview: React.FC<OverviewProps> = ({user}) => {
             const updatedDevice = {
                 ...device,
                 name: newDeviceName,
+                message: newDeviceMessage
             };
 
             await handleUpdateDevice(updatedDevice);
@@ -105,11 +112,9 @@ const Overview: React.FC<OverviewProps> = ({user}) => {
         }
     };
 
-
     const handleCancelClick = () => {
         setEditMode(false);
     };
-
 
     return (
         <div>
@@ -167,35 +172,44 @@ const Overview: React.FC<OverviewProps> = ({user}) => {
                         {devices.map((device, index) => (
                             <div
                                 key={index}
-                                className={`w-full md:w-full lg:w-1/2 xl:w-1/2 p-4 relative ${
+                                className={`w-full md:w-full lg:w-1/3 xl:w-1/3 p-4 relative ${
                                     hoveredIndex === index ? "hovered" : ""
                                 }`}
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(null)}
                             >
                                 <div
-                                    className="relative bg-white shadow-md rounded-t-lg p-6 h-32 flex flex-col justify-center">
-                                    {editMode ? (
+                                    className="relative bg-white shadow-lg border-2 rounded-t-lg p-6 h-32 flex flex-col justify-center">
+                                    {editMode && editDevice === device.id ? 
+                                    (
+                                        <div>
                                         <input
-                                            placeholder="Name"
-                                            value={newDeviceName}
-                                            onChange={(e) => setNewDeviceName(e.target.value)}
-                                            className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-rose-500 sm:text-sm"
+                                          minLength={1}
+                                          placeholder="Name"
+                                          value={newDeviceName}
+                                          onChange={(e) => setNewDeviceName(e.target.value)}
+                                          className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-rose-500 sm:text-sm"
                                         />
+                                        <input
+                                          minLength={1}
+                                          placeholder="Message" 
+                                          value={newDeviceMessage} 
+                                          onChange={(e) => setNewDeviceMessage(e.target.value)}
+                                          className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-rose-500 sm:text-sm"
+                                        />
+                                      </div>
                                     ) : (
                                         <>
-                                            <p className="text-center">
-                                                {device.name}
+                                            <p>
+                                            <strong>Device Name:</strong> {device.name}
                                             </p>
-                                            <p className="text-center">
+                                            <p>
+                                            <strong>Device Message:</strong> {device.message}
+                                            </p>
+                                            <p>
                                                 <strong>Device ID:</strong> {device.id}
                                             </p>
-                                            <p className="text-center">
-                                                <strong>User ID:</strong> {device.user_id}
-                                            </p>
                                         </>
-
-
                                     )}
                                 </div>
                                 {hoveredIndex === index && (
@@ -233,7 +247,7 @@ const Overview: React.FC<OverviewProps> = ({user}) => {
             from-rose-900 to-orange-700 hover:bg-gradient-to-bl
             focus:outline-none focus:ring-orange-200 font-medium rounded-lg
             text-xs text-center mr-2 mb-2"
-                                                    onClick={handleEditClick}
+                                                    onClick={(e) => {handleEditClick(e); editDevice = device.id; setNewDeviceName(device.name); setNewDeviceMessage(device.message);} }
                                                 >
                                                     Edit
                                                 </button>

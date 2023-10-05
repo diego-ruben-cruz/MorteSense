@@ -12,12 +12,14 @@ interface CreateDeviceProps {
 
 const useCreateDevice: React.FC<CreateDeviceProps> = ({onClose, onCreate, open}) => {
     const [deviceName, setDeviceName] = useState("");
+    const [deviceMessage, setDeviceMessage] = useState("");
 
     const handleCreate = async () => {
         if (deviceName.trim() !== "") {
-            await handleCreateDevice({name: deviceName})
+            await handleCreateDevice({name: deviceName, message: deviceMessage})
                 .then(() => {
                     setDeviceName("");
+                    setDeviceMessage("");
                     onClose();
                 })
                 .catch((error) => {
@@ -75,6 +77,13 @@ const useCreateDevice: React.FC<CreateDeviceProps> = ({onClose, onCreate, open})
                                         placeholder="Device Name"
                                         value={deviceName}
                                         onChange={(e) => setDeviceName(e.target.value)}
+                                        className="mt-4 w-full p-2 border border-gray-300 rounded"
+                                    />
+                                    <input
+                                        type="text"
+                                        placeholder="Device Message"
+                                        value={deviceMessage}
+                                        onChange={(e) => setDeviceMessage(e.target.value)}
                                         className="mt-4 w-full p-2 border border-gray-300 rounded"
                                     />
                                 </div>

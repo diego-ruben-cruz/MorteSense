@@ -6,6 +6,7 @@ export interface DeviceData {
     id?: string;
     user_id?: string;
     name?: string;
+    message?: string;
 }
 
 
