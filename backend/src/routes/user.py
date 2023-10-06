@@ -43,7 +43,7 @@ def get_all_users():
 @jwt_required()
 def get_current_user():    
     user_id = get_jwt_identity()
-    
+
     cursor = mysql_connection.cursor()
     query = "SELECT * FROM users WHERE id = %s"
     cursor.execute(query, (user_id,))

@@ -14,6 +14,7 @@ def get_uuid():
 @jwt_required()
 def get_all_devices():
     user_id = get_jwt_identity()  # Get the user ID of the authenticated user
+
     if not user_id:
         return jsonify({"error": "Unauthorized"}), 401
 

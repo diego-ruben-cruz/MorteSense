@@ -8,6 +8,10 @@ account_sid = os.environ['TWILIO_ACCOUNT_SID']
 auth_token = os.environ['TWILIO_AUTH_TOKEN']
 client = Client(account_sid, auth_token)
 
+@app.route("/test", methods=["GET"])
+def test():
+    return jsonify({"error": str("Error")}), 500
+
 
 @app.route("/send-sms", methods=["POST"])
 def send_sms():

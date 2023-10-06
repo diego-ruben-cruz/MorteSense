@@ -16,7 +16,8 @@ class Device:
         self.message = message
 
 class MotionDetections:
-    def __init__(self, id, timestamp, user_id):
+    def __init__(self, id, timestamp, device_id, message):
         self.id = id
         self.timestamp = timestamp
-        self.user_id = user_id
+        self.device_id = device_id
+        self.message = message
