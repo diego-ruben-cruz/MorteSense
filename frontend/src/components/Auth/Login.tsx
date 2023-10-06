@@ -87,7 +87,7 @@ const Login = ({setUser}: LoginProps) => {
                                 <ExclamationCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true"/>
                             </div>
                             <div className="ml-3">
-                                <p className="text-sm font-medium text-red-800">Request failed. Please try again.</p>
+                                <p className="text-sm font-medium text-red-800">Account doesn't exist.</p>
                             </div>
                         </div>
                     </div>

@@ -10,7 +10,7 @@ client = Client(account_sid, auth_token)
 
 @app.route("/test", methods=["GET"])
 def test():
-    return jsonify({"error": str("Error")}), 500
+    return "200"
 
 
 @app.route("/send-sms", methods=["POST"])
@@ -22,6 +22,7 @@ def send_sms():
     query = "SELECT user_id, message FROM devices WHERE id = %s"
     cursor.execute(query, (device_id,))
     result = cursor.fetchone()
+    cursor.close()
 
     if(result is None):
         return jsonify({"error": str("Device doesn't exist")}), 500
@@ -29,8 +30,10 @@ def send_sms():
     message = result["message"]
 
     query = "SELECT phone_number FROM users WHERE id = %s"
+    cursor = mysql_connection.cursor(dictionary=True)
     cursor.execute(query, (result['user_id'],))
     result = cursor.fetchone()
+    cursor.close()
 
     phone_number = result['phone_number']
 
