@@ -173,7 +173,6 @@ const Register = () => {
                                     <input
                                         id="phone_number"
                                         name="phone_number"
-                                        type="tel"
                                         placeholder="1234567890"
                                         pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                                         onChange={(e) => setPhoneNumber(e.target.value)}

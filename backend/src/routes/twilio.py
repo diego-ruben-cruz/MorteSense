@@ -13,10 +13,9 @@ def test():
     return "200"
 
 
-@app.route("/send-sms", methods=["POST"])
-def send_sms():
-    device_id = request.json["device_id"]
-
+@app.route("/send-sms/<device_id>", methods=["GET"])
+def send_sms(device_id):
+    
     #Get phone number
     cursor = mysql_connection.cursor(dictionary=True)
     query = "SELECT user_id, message FROM devices WHERE id = %s"
@@ -37,15 +36,16 @@ def send_sms():
 
     phone_number = result['phone_number']
 
+    #CHECK IF COOLDOWN DONE
+    #ADD NOTIFICATION
+
     try:
         # Use the Twilio client to send an SMS message
-        '''
         client.messages.create(
             body=message,
-            from_="+18446590037",  # Replace with your Twilio phone number
+            from_="+18444901403",  # Replace with your Twilio phone number
             to=phone_number
         )
-        '''
         return jsonify({"message": str(message), "phone_number": str(phone_number)}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500

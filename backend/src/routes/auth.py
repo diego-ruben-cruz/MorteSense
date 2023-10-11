@@ -17,7 +17,7 @@ def register_user():
     username = request.json["username"]
     email = request.json["email"]
     password = request.json["password"]
-    phone_number = request.json["password"]
+    phone_number = request.json["phone_number"]
 
     # Check if user already exists
     cursor = mysql_connection.cursor(dictionary=True)
@@ -164,7 +164,6 @@ def edit_user():
 
     new_email = request.json.get("new_email")
     new_phone_number = request.json.get("new_phone_number")
-    print(new_phone_number)
     new_name = request.json.get("new_name")
     new_username = request.json.get("new_username")
 
