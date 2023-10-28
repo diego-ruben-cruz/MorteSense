@@ -1,0 +1,11 @@
+
+*.cls
+*.aux
+*.bbl
+*.fdb_latexmk
+*.fls
+*.log
+*.pdf
+*.gz
+*.blg
+*.jpg
