@@ -864,14 +864,14 @@ Below is a list of the standards used for different aspects of the project:
             referenced for pinout in relation to the microcontroller \cite{CQRobot_specs2016}
 \end{itemize}
 
-\section{Testing and Experimentation}
+\section{Testing and Experimentation}\label{sec:testing-and-experimentation}
 
-\subsection{Testing and Experiment Scope}
+\subsection{Testing and Experiment Scope}\label{subsec:testing-and-experiment-scope}
 
 With respect to the hardware, there were different approaches
 to testing and experimentation
-at different stages of development. The following provides an overview of
-the different objectives that were present during each stage of development:
+at different stages of development.
+The following provides an overview of the different objectives that were present during each stage of development:
 
 \begin{itemize}
       \item \textbf{Ideation}:
@@ -901,14 +901,14 @@ the different objectives that were present during each stage of development:
 \end{itemize}
 
 As far as the software, a systematic approach was taken to ensure the
-robustness and efficiency of the application. The following objectives
-guided the testing and experimentation at various stages of development:
+robustness and efficiency of the application.
+The following objectives guided the testing and experimentation at various stages of development:
 
 \begin{itemize}
       \item \textbf{Research}:
             \begin{itemize}
                   \item Conduct Market Research
-                  \item Identify key challenges to state of the art
+                  \item Identify key challenges to state-of-the-art
                   \item Conduct contemporary literature review
             \end{itemize}
       \item \textbf{Ideation}:
@@ -940,7 +940,7 @@ guided the testing and experimentation at various stages of development:
             \end{itemize}
 \end{itemize}
 
-\subsection{Testing and Experiment Approach}
+\subsection{Testing and Experiment Approach}\label{subsec:testing-and-experiment-approach}
 
 % Hardware
 
@@ -949,66 +949,88 @@ checks, and constant soldering of different parts in different ways to conserve 
 make the hardware as physically unobtrusive as possible while keeping it easy to repair.
 During the ideation phase, simulations were used with the Fritzing software where
 different power deliveries and wiring configurations were tested via virtual
-simulations. This led to some of the compromises made as described in \textbf{Design
-      Constraints, Problems, Trade-offs, and Solutions.}
+simulations.
+This led to some of the compromises made as described in \textbf{Design Constraints, Problems, Trade-offs, and Solutions.}
 
 During the assembly phase, a breadboard was used to test without spending time and
-effort soldering and desoldering the configuration. Once the hardware configuration
-reached a satisfactory level of performance, only then were the parts soldered
-together. During the prototyping phase, different wires and connectors were used
-to determine the best manner of mounting different components to one continuous
-connection. A proof of concept was made that had no consideration for conservation
-of space, and continuity checks were done with a multimeter to ensure that each
+effort soldering and desoldering the configuration.
+Once the hardware configuration reached a satisfactory level of performance, only then were the parts soldered
+together.
+During the prototyping phase, different wires and connectors were used to determine the best manner of mounting different components to one continuous
+connection.
+A proof of concept was made that had no consideration for conservation of space, and continuity checks were done with a multimeter to ensure that each
 solder connection was made properly.
 
 In finalizing the hardware configuration, several spare parts were soldered together
 and connected onto the board that used different techniques to conserve space.
-Again, the solder joints were tested for continuity with a multimeter. In addition
-to conserving space, an additional consideration was made to avoid short-circuits
-by exploring both electrical tape and heatshrink. From there, ease of repair was
-taken into account by documenting the nature of the solder joints so end users
+Again, the solder joints were tested for continuity with a multimeter.
+In addition to conserving space, an additional consideration was made to avoid short-circuits
+by exploring both electrical tape and heatshrink.
+From there, ease of repair was taken into account by documenting the nature of the solder joints so end users
 could easily replicate the consolidation done by the hardware system integrators.
 
 % Software
 
 In testing the software implementation, the primary goal was to validate the functionality,
-reliability, and performance of the system across various components and integrations.
+reliability, and performance of the system across various components and integrations. %
 The testing process was comprehensive, covering both unit and integration levels to
 ensure the smooth functioning of individual elements as well as their
-seamless integration into the whole system.
+seamless integration into the whole system. %
 
 The unit testing phase involved meticulously testing each system component in isolation,
 scrutinizing the functions and methods within the Python and Flask backend, along
-with the ReactJS frontend. The developers conducted a thorough examination of the
-functionality of MySQL database interactions and confirmed the dependable data
-transmission between the microcontroller and the backend server using MicroPython.
+with the ReactJS frontend. %
+The developers conducted a thorough examination of the functionality of MySQL database interactions and confirmed the dependable data
+transmission between the microcontroller and the backend server using MicroPython. %
 
 Integration testing was then conducted to secure a seamless connection between
 the frontend, backend, and database, which guaranteed a consistent and accurate
-flow of data. Validation was done by examining the communication efficiency between
-the microcontroller, sensors, and backend server, ensuring that the entire system
-operated seamlessly when all components were brought together.
+flow of data. %
+Validation was done by examining the communication efficiency between the microcontroller, sensors, and backend server, ensuring that the entire system
+operated seamlessly when all components were brought together. %
 
-\subsection{Testing and Experiment Results and Analysis}
+\subsection{Testing and Experiment Results and Analysis}\label{subsec:testing-and-experiment-results-and-analysis}
 
 While the majority of test cases passed successfully, demonstrating the system’s
 robustness and reliability, any failed tests were promptly addressed,
-with bugs fixed and tests rerun until success was achieved.
+with bugs fixed and tests rerun until success was achieved. %
 
 \begin{itemize}
       \item \textbf{Performance Test Result Analysis}: The system performed well
-            under normal conditions and was able to handle load up to performance benchmarks.
+            under normal conditions and was able to handle load up to performance benchmarks. %
       \item \textbf{Test Coverage}: To ensure confidence in the system’s reliability,
-            tests achieved high coverage across the codebase.
+            tests achieved high coverage across the codebase. %
       \item \textbf{Bug Distribution Report}: Bugs were categorized based on their
-            severity, with critical and major bugs given priority in fixing. GitHub
-            Issues detailing of bugs, their severity, and the components
-            they affected was created.
+            severity, with critical and major bugs given priority in fixing.  %
+            GitHub Issues detailing of bugs, their severity, and the components
+            they affected was created. %
 \end{itemize}
+
+\begin{figure}[htbp]
+      \centering
+      \includegraphics[width=1\linewidth]{images/JMeter_testSuites.png}
+      \caption{Using JMeter Test Suite}
+      \label{fig:figure2}
+
+\end{figure}
+
+\begin{figure}[htbp]
+      \centering
+      \includegraphics[width=1\linewidth]{images/JMeter_100reqBenchmark.png}
+      \caption{JMeter 100 Request Benchmark Metrics}
+      \label{fig:figure3}
+\end{figure}
+
+\begin{figure}[htbp]
+      \centering
+      \includegraphics[width=1\linewidth]{images/GitHubIssues.png}
+      \caption{Issue Tracking System}
+      \label{fig:gitIssues}
+\end{figure}
 
 By rigorously following this comprehensive testing and experiment
 approach, the developers ensured that the system was reliable,
-performed well, and met all the defined requirements and benchmarks.
+performed well, and met all the defined requirements and benchmarks. %
 
 \section{Conclusion and Future Work}
 
