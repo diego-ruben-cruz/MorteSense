@@ -24,6 +24,8 @@
     <br />
     <br />
     <br />
+    <a href="https://github.com/diego-ruben-cruz/MorteSense">Project Repository</a>
+    ·
     <a href="https://youtu.be/-TZKTMkuT48">View Demo</a>
     ·
     <a href="https://github.com/diego-ruben-cruz/MorteSense/issues">Report Bug</a>
