@@ -24,7 +24,7 @@
     <br />
     <br />
     <br />
-    <a href="https://cmpe-195a-home-repo-2023.vercel.app/">View Demo</a>
+    <a href="https://youtu.be/-TZKTMkuT48">View Demo</a>
     ·
     <a href="https://github.com/diego-ruben-cruz/MorteSense/issues">Report Bug</a>
     ·
