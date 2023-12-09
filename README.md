@@ -12,6 +12,10 @@
 
 # Technical Documentation
 
+## Project Repository
+
+[Link to MorteSense, Group 28, project repository](https://github.com/diego-ruben-cruz/MorteSense)
+
 <!-- PROJECT LOGO -->
 <br />
   <h3 align="center">DIY Security.</h3>
@@ -24,8 +28,6 @@
     <br />
     <br />
     <br />
-    <a href="https://github.com/diego-ruben-cruz/MorteSense">Project Repository</a>
-    ·
     <a href="https://youtu.be/-TZKTMkuT48">View Demo</a>
     ·
     <a href="https://github.com/diego-ruben-cruz/MorteSense/issues">Report Bug</a>
