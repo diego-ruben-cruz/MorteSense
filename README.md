@@ -79,11 +79,12 @@ This is the comprehensive project for CMPE 195 at San Jose State University, dur
 ## Challenges we ran into
 
 - Power Delivery
+- Enclosure Design and Prototyping
 
 ## Accomplishments we are proud of
 
 - Learning LaTeX to create the final project report
-- Using CAD to design an enclosure for the hardware
+- Using CAD to design a high-fidelity rendition of microcontroller for reference
 
 ## Architecture
 
@@ -116,14 +117,29 @@ This is the comprehensive project for CMPE 195 at San Jose State University, dur
 
 ### Prerequisites and Installation
 
+#### Hardware
+
+- Raspberry Pi Pico W Microcontroller
+- CQRobot 5.8GHz Microwave Motion Sensor
+- Red and Green Bulbs
+- 100 Ohm Resistors
+- Fritzing Circuit Design Software
+- Solidworks (or any CAD Program)
+
 #### Backend
 
 - Requirements.txt
 - Redis server
+- Python Flask
+- MySQL
+- AWS
+- Twilio API
 
 #### Frontend
 
 - Node Modules `npm run install`
+- ReactJS
+- Tailwind CSS
 
 #### API Tooling
 
@@ -169,14 +185,14 @@ your password
 
 - Released Beta (Summer 2023)
 
-  - Create Initial Pages for web app client
-  - Create Prototype I for Hardware Enclosure
-  - Create Prototype II for Hardware Enclosure
+  - [x] Create Initial Pages for web app client
+  - [x] Create CAD for Microcontroller
+  - [x] Created low-fidelity enclosure (changed because of modified form factor)
 
 - Product Launch (Fall 2023)
-  - Test full-fledged prototype
-  - Perform final revisions on product
-  - Prepare product for public release with Project Report
+  - [x] Test full-fledged prototype
+  - [x] Perform final revisions on product
+  - [x] Prepare product for public release with Project Report
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
