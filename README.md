@@ -88,7 +88,9 @@ This is the comprehensive project for CMPE 195 at San Jose State University, dur
 
 ## Architecture
 
-<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+<img width="567" alt="image" src="https://github.com/diego-ruben-cruz/MorteSense/assets/22685770/ce273ef4-fefb-475e-800a-c3fdb1f1103f">
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
