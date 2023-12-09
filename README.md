@@ -139,7 +139,7 @@ This is the comprehensive project for CMPE 195 at San Jose State University, dur
 
 #### Frontend
 
-- Node Modules `npm run install`
+- NodeJS
 - ReactJS
 - Tailwind CSS
 
@@ -163,13 +163,37 @@ mysql -h [DATABASE_NAME].[HOST] -P 3306 -u admin -p
 your password
 ```
 
+#### Installing Dependencies
+
+In the root directory:
+
+Run the following command:
+
+```cmd
+npm i
+```
+
+In backend folder:
+
+Run the following command using pip:
+
+```cmd
+pip3 install -r requirements.txt
+```
+
 <!-- USAGE -->
 
 ## Usage
 
-- Run Redis server before running `backend`
-- Run `backend` running `frontend`
-- Run `frontend`
+**Here is the basic process of running the system**
+
+- Run Redis server with before running `backend`
+- Run `backend` with `flask run run --host=0.0.0.0` before running `frontend`
+- Run `frontend` with `npm start`
+
+### Test backend API
+
+To test the backend API, the end user can use the json files provided in the `postman` directory.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
