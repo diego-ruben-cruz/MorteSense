@@ -8,5 +8,3 @@ flask-cors
 flask-mysql
 mysql-connector-python
 twilio
-
-flask --app run run --host=0.0.0.0
