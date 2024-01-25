@@ -9,3 +9,4 @@
 *.gz
 *.blg
 *.jpg
+.DS_Store
