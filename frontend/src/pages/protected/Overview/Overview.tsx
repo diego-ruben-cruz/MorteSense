@@ -9,7 +9,7 @@ import {
     handleUpdateDevice
 } from "../../../lib/device";
 import {Device} from "../../../lib/types";
-import CreateDevice from "../../../hooks/CreateDevice";
+import CreateDevice from "../../../hooks/createDevice";
 
 interface OverviewProps {
     user: UserData | null;
