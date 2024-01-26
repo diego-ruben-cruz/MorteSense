@@ -60,6 +60,7 @@
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#citation">Citation</li>
   </ol>
 </details>
 
@@ -227,12 +228,6 @@ To test the backend API, the end user can use the json files provided in the `po
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LICENSE -->
-
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
@@ -251,6 +246,25 @@ Here are some resources we made use of while developing, for those who wish to b
 - [Axios Documentation](https://axios-http.com/docs/intro)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Citation
+
+```ts
+@misc{MorteSense-2024,
+  author       = {MorteSense},
+  title        = {MorteSense},
+  howpublished = {\url{https://github.com/diego-ruben-cruz/MorteSense}},
+  year         = {2024},
+}
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the Apache 2.0 License. See `LICENSE.txt` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
