@@ -250,11 +250,11 @@ Here are some resources we made use of while developing, for those who wish to b
 ## Citation
 
 ```ts
-@misc{MorteSense-2024,
-  author       = {MorteSense},
-  title        = {MorteSense},
+@misc{MorteSense-2023,
+  author       = {{S. Abdulkhamidov} and {D. Cruz} and {D. G. Carrasco} and {S. Gevorgyan}},
+  title        = {MorteSense: DIY Home Security},
   howpublished = {\url{https://github.com/diego-ruben-cruz/MorteSense}},
-  year         = {2024},
+  year         = {2023},
 }
 ```
 
